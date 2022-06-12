@@ -14,8 +14,8 @@ let package = Package(
             targets: ["AdinkraAppUI"]),
     ],
     dependencies: [
-        .package(path: "../AdinkraAppDomainData"),
-        .package(path: "../AdinkraAppPresentation"),
+//        .package(path: "../AdinkraAppDomainData"),
+//        .package(path: "../AdinkraAppPresentation"),
         .package(name: "Lottie", url: "https://github.com/airbnb/lottie-ios.git", from: "3.3.0"),
     ],
     targets: [
