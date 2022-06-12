@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		691F7FD12856922600901A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FD02856922600901A63 /* AppDelegate.swift */; };
+		691F7FD32856922600901A63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FD22856922600901A63 /* SceneDelegate.swift */; };
+		691F7FD52856922600901A63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FD42856922600901A63 /* ViewController.swift */; };
+		691F7FD82856922600901A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 691F7FD62856922600901A63 /* Main.storyboard */; };
+		691F7FDA2856922700901A63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 691F7FD92856922700901A63 /* Assets.xcassets */; };
+		691F7FDD2856922700901A63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 691F7FDB2856922700901A63 /* LaunchScreen.storyboard */; };
+		691F7FE82856922800901A63 /* AdinkraAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FE72856922800901A63 /* AdinkraAppTests.swift */; };
+		691F7FF22856922800901A63 /* AdinkraAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FF12856922800901A63 /* AdinkraAppUITests.swift */; };
+		691F7FF42856922800901A63 /* AdinkraAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FF32856922800901A63 /* AdinkraAppUITestsLaunchTests.swift */; };
+		691F80062856932800901A63 /* AdinkraAppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 691F80052856932800901A63 /* AdinkraAppUI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		691F7FE42856922800901A63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 691F7FC52856922600901A63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 691F7FCC2856922600901A63;
+			remoteInfo = AdinkraApp;
+		};
+		691F7FEE2856922800901A63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 691F7FC52856922600901A63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 691F7FCC2856922600901A63;
+			remoteInfo = AdinkraApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		691F7FCD2856922600901A63 /* AdinkraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdinkraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		691F7FD02856922600901A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		691F7FD22856922600901A63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		691F7FD42856922600901A63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		691F7FD72856922600901A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		691F7FD92856922700901A63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		691F7FDC2856922700901A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		691F7FDE2856922700901A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		691F7FE32856922800901A63 /* AdinkraAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdinkraAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		691F7FE72856922800901A63 /* AdinkraAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdinkraAppTests.swift; sourceTree = "<group>"; };
+		691F7FED2856922800901A63 /* AdinkraAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdinkraAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		691F7FF12856922800901A63 /* AdinkraAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdinkraAppUITests.swift; sourceTree = "<group>"; };
+		691F7FF32856922800901A63 /* AdinkraAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdinkraAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		691F8001285692D700901A63 /* AdinkraAppDomainData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AdinkraAppDomainData; path = ../../Libraries/AdinkraAppDomainData; sourceTree = "<group>"; };
+		691F8002285692D700901A63 /* AdinkraAppPresentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AdinkraAppPresentation; path = ../../Libraries/AdinkraAppPresentation; sourceTree = "<group>"; };
+		691F8003285692D700901A63 /* AdinkraAppUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AdinkraAppUI; path = ../../Libraries/AdinkraAppUI; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		691F7FCA2856922600901A63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691F80062856932800901A63 /* AdinkraAppUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691F7FE02856922800901A63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691F7FEA2856922800901A63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		691F7FC42856922600901A63 = {
+			isa = PBXGroup;
+			children = (
+				691F8000285692C300901A63 /* Libraries */,
+				691F7FCF2856922600901A63 /* AdinkraApp */,
+				691F7FE62856922800901A63 /* AdinkraAppTests */,
+				691F7FF02856922800901A63 /* AdinkraAppUITests */,
+				691F7FCE2856922600901A63 /* Products */,
+				691F80042856932800901A63 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		691F7FCE2856922600901A63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				691F7FCD2856922600901A63 /* AdinkraApp.app */,
+				691F7FE32856922800901A63 /* AdinkraAppTests.xctest */,
+				691F7FED2856922800901A63 /* AdinkraAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		691F7FCF2856922600901A63 /* AdinkraApp */ = {
+			isa = PBXGroup;
+			children = (
+				691F7FD02856922600901A63 /* AppDelegate.swift */,
+				691F7FD22856922600901A63 /* SceneDelegate.swift */,
+				691F7FD42856922600901A63 /* ViewController.swift */,
+				691F7FD62856922600901A63 /* Main.storyboard */,
+				691F7FD92856922700901A63 /* Assets.xcassets */,
+				691F7FDB2856922700901A63 /* LaunchScreen.storyboard */,
+				691F7FDE2856922700901A63 /* Info.plist */,
+			);
+			path = AdinkraApp;
+			sourceTree = "<group>";
+		};
+		691F7FE62856922800901A63 /* AdinkraAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				691F7FE72856922800901A63 /* AdinkraAppTests.swift */,
+			);
+			path = AdinkraAppTests;
+			sourceTree = "<group>";
+		};
+		691F7FF02856922800901A63 /* AdinkraAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				691F7FF12856922800901A63 /* AdinkraAppUITests.swift */,
+				691F7FF32856922800901A63 /* AdinkraAppUITestsLaunchTests.swift */,
+			);
+			path = AdinkraAppUITests;
+			sourceTree = "<group>";
+		};
+		691F8000285692C300901A63 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				691F8001285692D700901A63 /* AdinkraAppDomainData */,
+				691F8002285692D700901A63 /* AdinkraAppPresentation */,
+				691F8003285692D700901A63 /* AdinkraAppUI */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		691F80042856932800901A63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		691F7FCC2856922600901A63 /* AdinkraApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 691F7FF72856922800901A63 /* Build configuration list for PBXNativeTarget "AdinkraApp" */;
+			buildPhases = (
+				691F7FC92856922600901A63 /* Sources */,
+				691F7FCA2856922600901A63 /* Frameworks */,
+				691F7FCB2856922600901A63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdinkraApp;
+			packageProductDependencies = (
+				691F80052856932800901A63 /* AdinkraAppUI */,
+			);
+			productName = AdinkraApp;
+			productReference = 691F7FCD2856922600901A63 /* AdinkraApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		691F7FE22856922800901A63 /* AdinkraAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 691F7FFA2856922800901A63 /* Build configuration list for PBXNativeTarget "AdinkraAppTests" */;
+			buildPhases = (
+				691F7FDF2856922800901A63 /* Sources */,
+				691F7FE02856922800901A63 /* Frameworks */,
+				691F7FE12856922800901A63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				691F7FE52856922800901A63 /* PBXTargetDependency */,
+			);
+			name = AdinkraAppTests;
+			productName = AdinkraAppTests;
+			productReference = 691F7FE32856922800901A63 /* AdinkraAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		691F7FEC2856922800901A63 /* AdinkraAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 691F7FFD2856922800901A63 /* Build configuration list for PBXNativeTarget "AdinkraAppUITests" */;
+			buildPhases = (
+				691F7FE92856922800901A63 /* Sources */,
+				691F7FEA2856922800901A63 /* Frameworks */,
+				691F7FEB2856922800901A63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				691F7FEF2856922800901A63 /* PBXTargetDependency */,
+			);
+			name = AdinkraAppUITests;
+			productName = AdinkraAppUITests;
+			productReference = 691F7FED2856922800901A63 /* AdinkraAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		691F7FC52856922600901A63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					691F7FCC2856922600901A63 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					691F7FE22856922800901A63 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 691F7FCC2856922600901A63;
+					};
+					691F7FEC2856922800901A63 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 691F7FCC2856922600901A63;
+					};
+				};
+			};
+			buildConfigurationList = 691F7FC82856922600901A63 /* Build configuration list for PBXProject "AdinkraApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 691F7FC42856922600901A63;
+			productRefGroup = 691F7FCE2856922600901A63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				691F7FCC2856922600901A63 /* AdinkraApp */,
+				691F7FE22856922800901A63 /* AdinkraAppTests */,
+				691F7FEC2856922800901A63 /* AdinkraAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		691F7FCB2856922600901A63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691F7FDD2856922700901A63 /* LaunchScreen.storyboard in Resources */,
+				691F7FDA2856922700901A63 /* Assets.xcassets in Resources */,
+				691F7FD82856922600901A63 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691F7FE12856922800901A63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691F7FEB2856922800901A63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		691F7FC92856922600901A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691F7FD52856922600901A63 /* ViewController.swift in Sources */,
+				691F7FD12856922600901A63 /* AppDelegate.swift in Sources */,
+				691F7FD32856922600901A63 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691F7FDF2856922800901A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691F7FE82856922800901A63 /* AdinkraAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691F7FE92856922800901A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691F7FF22856922800901A63 /* AdinkraAppUITests.swift in Sources */,
+				691F7FF42856922800901A63 /* AdinkraAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		691F7FE52856922800901A63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 691F7FCC2856922600901A63 /* AdinkraApp */;
+			targetProxy = 691F7FE42856922800901A63 /* PBXContainerItemProxy */;
+		};
+		691F7FEF2856922800901A63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 691F7FCC2856922600901A63 /* AdinkraApp */;
+			targetProxy = 691F7FEE2856922800901A63 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		691F7FD62856922600901A63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				691F7FD72856922600901A63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		691F7FDB2856922700901A63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				691F7FDC2856922700901A63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		691F7FF52856922800901A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		691F7FF62856922800901A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		691F7FF82856922800901A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J83753GZ93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdinkraApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jay.A.AdinkraApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		691F7FF92856922800901A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J83753GZ93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdinkraApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jay.A.AdinkraApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		691F7FFB2856922800901A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J83753GZ93;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jay.A.AdinkraAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdinkraApp.app/AdinkraApp";
+			};
+			name = Debug;
+		};
+		691F7FFC2856922800901A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J83753GZ93;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jay.A.AdinkraAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdinkraApp.app/AdinkraApp";
+			};
+			name = Release;
+		};
+		691F7FFE2856922800901A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J83753GZ93;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jay.A.AdinkraAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AdinkraApp;
+			};
+			name = Debug;
+		};
+		691F7FFF2856922800901A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J83753GZ93;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jay.A.AdinkraAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AdinkraApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		691F7FC82856922600901A63 /* Build configuration list for PBXProject "AdinkraApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691F7FF52856922800901A63 /* Debug */,
+				691F7FF62856922800901A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		691F7FF72856922800901A63 /* Build configuration list for PBXNativeTarget "AdinkraApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691F7FF82856922800901A63 /* Debug */,
+				691F7FF92856922800901A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		691F7FFA2856922800901A63 /* Build configuration list for PBXNativeTarget "AdinkraAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691F7FFB2856922800901A63 /* Debug */,
+				691F7FFC2856922800901A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		691F7FFD2856922800901A63 /* Build configuration list for PBXNativeTarget "AdinkraAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691F7FFE2856922800901A63 /* Debug */,
+				691F7FFF2856922800901A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		691F80052856932800901A63 /* AdinkraAppUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AdinkraAppUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 691F7FC52856922600901A63 /* Project object */;
+}
