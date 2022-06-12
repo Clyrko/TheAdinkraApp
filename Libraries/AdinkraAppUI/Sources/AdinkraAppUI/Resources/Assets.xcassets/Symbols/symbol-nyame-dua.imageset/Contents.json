@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "symbol-nyame-dua.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

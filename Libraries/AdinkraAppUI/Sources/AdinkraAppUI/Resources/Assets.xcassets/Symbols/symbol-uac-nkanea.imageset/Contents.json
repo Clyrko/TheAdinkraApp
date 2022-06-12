@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "symbol-uac-nkanea.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

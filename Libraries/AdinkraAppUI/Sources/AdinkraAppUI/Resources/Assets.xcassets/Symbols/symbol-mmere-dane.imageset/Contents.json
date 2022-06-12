@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "symbol-mmere-dane.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
