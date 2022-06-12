@@ -8,7 +8,7 @@ private enum Constants {
     static let horizontalInset: CGFloat = 30
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     private var pageHeader = TitleHeaderView()
     private var helloLabel: StyleLabel!
     private var scanIconImageView: UIImageView!

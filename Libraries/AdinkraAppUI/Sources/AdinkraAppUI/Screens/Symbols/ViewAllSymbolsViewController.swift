@@ -6,7 +6,7 @@ private enum Constants {
     static let horizontalInset: CGFloat = 28
 }
 
-class ViewAllSymbolsViewController: UIViewController {
+class ViewAllSymbolsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
     private var searchBar = StyleSearchBar()
     private var titleLabel: StyleLabel!

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon-tab-25-favorite.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

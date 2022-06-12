@@ -7,7 +7,7 @@ private enum Constants {
     static let stackViewSpacing: CGFloat = 4
 }
 
-class SignInViewController: UIViewController {
+class SignInViewController: BaseViewController {
     private var signInTitleLabel: StyleLabel!
     private var emailTextField = StyleTextField()
     private var passwordTextField = StyleTextField()

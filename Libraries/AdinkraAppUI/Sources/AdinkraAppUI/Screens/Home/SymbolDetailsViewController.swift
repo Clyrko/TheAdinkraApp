@@ -6,7 +6,7 @@ private enum Constants {
     static let horizontalInset: CGFloat = 28
 }
 
-class SymbolDetailsViewController: UIViewController {
+class SymbolDetailsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
     private var symbolView: SymbolView!
     private var symbolNameLabel: StyleLabel!

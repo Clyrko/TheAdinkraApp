@@ -5,7 +5,7 @@ private enum Constants {
     static let horizontalInset: CGFloat = 28
 }
 
-class CategoryDetailsViewController: UIViewController {
+class CategoryDetailsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
     private var searchBar = StyleSearchBar()
     private var tableView: UITableView!

@@ -11,7 +11,7 @@ private enum Constants {
     static let stackViewHeight: CGFloat = 25
 }
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
     private var signUpTitleLabel: StyleLabel!
     private var firstNameTextField = StyleTextField()
     private var lastNameTextField = StyleTextField()

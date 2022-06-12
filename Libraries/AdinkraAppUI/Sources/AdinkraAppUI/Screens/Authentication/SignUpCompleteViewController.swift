@@ -6,7 +6,7 @@ private enum Constants {
     static let cornerRadius: CGFloat = 8
 }
 
-class SignUpCompleteViewController: UIViewController {
+class SignUpCompleteViewController: BaseViewController {
     private var titleLabel: StyleLabel!
     private var iconImageView: UIImageView!
     private var letsGetStartedButton: StyleButton!
