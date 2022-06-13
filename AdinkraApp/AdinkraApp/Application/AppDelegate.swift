@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupWindow() {
         window = UIWindow()
-        let controller = applicationDIProvider.makeHomeViewController()
+        let controller = applicationDIProvider.makeApplicationBaseViewController()
+//        let controller = applicationDIProvider.makeHomeViewController()
         applicationDIProvider.setBase(viewController: controller, window: window)
     }
 }

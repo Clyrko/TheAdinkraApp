@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
 //        .package(path: "../AdinkraAppDomainData"),
-//        .package(path: "../AdinkraAppPresentation"),
+        .package(path: "../AdinkraAppPresentation"),
         .package(name: "Lottie", url: "https://github.com/airbnb/lottie-ios.git", from: "3.3.0"),
     ],
     targets: [
@@ -24,7 +24,11 @@ let package = Package(
         .target(
             name: "AdinkraAppUI",
             dependencies: [
-                "Lottie"
+                "Lottie",
+                .product(
+                    name: "AdinkraAppPresentation",
+                    package: "AdinkraAppPresentation"
+                )
             ],
             resources: [
                 .process("Resources")

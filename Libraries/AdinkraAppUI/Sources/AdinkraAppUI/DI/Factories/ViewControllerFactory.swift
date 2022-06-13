@@ -1,11 +1,75 @@
 import UIKit
+import AdinkraAppPresentation
+
 class ViewControllerFactory {
     
-    func makeHomeViewController() -> UIViewController {
-        let navigationController = UINavigationController(rootViewController: HomeViewController())
-        navigationController.isNavigationBarHidden = true
-        return navigationController
+    private let tabBarItemProvider: TabBarItemProvider
+    private let ftuxCardItemProvider: FTUXTourItemProvider
+    
+    init(
+        with itemProvider: TabBarItemProvider,
+        ftuxCardItemProvider: FTUXTourItemProvider
+    ) {
+        self.tabBarItemProvider = itemProvider
+        self.ftuxCardItemProvider = ftuxCardItemProvider
     }
+
+         func makeApplicationBaseScreen() -> UIViewController {
+             let home = ContainedNavigationViewController(
+                 rootViewController: makeHomeViewController(),
+                 sidebarItem: tabBarItemProvider.home
+             )
+             
+             let store = ContainedNavigationViewController(
+                 rootViewController: makeStoreViewController(),
+                 sidebarItem: tabBarItemProvider.store
+             )
+             
+             let favorites = ContainedNavigationViewController(
+                 rootViewController: makeFavoritesViewController(),
+                 sidebarItem: tabBarItemProvider.favorites
+             )
+             
+             let settings = ContainedNavigationViewController(
+                 rootViewController: makeSettingsViewController(),
+                 sidebarItem: tabBarItemProvider.settings
+             )
+             
+             return BaseApplicationViewController(
+                 viewControllers: [
+                     home, store, favorites, settings
+                 ],
+                 ftuxCardItems: [
+                     ftuxCardItemProvider.home,
+                     ftuxCardItemProvider.store,
+                     ftuxCardItemProvider.favorites,
+                     ftuxCardItemProvider.settings
+                 ]
+             )
+         }
+
+         func makeHomeViewController() -> BaseViewController {
+             HomeViewController()
+         }
+
+         func makeStoreViewController() -> BaseViewController {
+             .init()
+         }
+
+         func makeFavoritesViewController() -> BaseViewController {
+             .init()
+         }
+
+         func makeSettingsViewController() -> BaseViewController {
+             .init()
+         }
+
+    
+//    func makeHomeViewController() -> UIViewController {
+//        let navigationController = UINavigationController(rootViewController: HomeViewController())
+//        navigationController.isNavigationBarHidden = true
+//        return navigationController
+//    }
     
     func makeSymbolDetailsViewController() -> SymbolDetailsViewController {
         .init()
@@ -34,5 +98,4 @@ class ViewControllerFactory {
     func makeSignInViewController() -> SignInViewController {
         .init()
     }
-    
 }
