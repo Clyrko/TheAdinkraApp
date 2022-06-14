@@ -49,6 +49,7 @@ extension StyleLabel {
     enum Style {
         case header1
         case header2
+        case header3
         case bodyMainRegular
         case headerBalsamiqRegular
         case bodyBalsamiqBold
@@ -62,6 +63,8 @@ extension StyleLabel.Style {
             return .primary(weight: .bold, size: 20)
         case .header2:
             return .primary(weight: .bold, size: 18)
+        case .header3:
+            return .primary(weight: .bold, size: 16)
         case .bodyMainRegular:
             return .primary(weight: .regular, size: 16)
         case .bodyBalsamiqBold:
