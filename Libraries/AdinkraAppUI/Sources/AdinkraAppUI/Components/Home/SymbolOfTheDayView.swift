@@ -22,7 +22,7 @@ class SymbolOfTheDayView: UIView {
     private var symbolOfTheDayImageView: UIImageView!
     private var favoriteIconImageView: UIImageView!
     private var symbolNameLabel: StyleLabel!
-    private var soundButton: UIButton! // stylebutton
+    private var soundButton: StyleButton!
     private var meaningLabel: StyleLabel!
     private var meaningDescriptionLabel: StyleLabel!
     private var detailsLabel: StyleLabel!
@@ -78,6 +78,11 @@ extension SymbolOfTheDayView {
             text: "Sankofa"
         )
         
+        soundButton = .init(with: .indicator, title: nil)
+        soundButton.iconImageView.image = .named("icon-28-sound")
+        soundButton.iconImageView.setImageMaskColor(.mainOrange)
+        soundButton.backgroundColor = .styleWhite
+        
         meaningLabel = .init(
             with: .header2,
             textColor: .mainOrange,
@@ -112,6 +117,7 @@ extension SymbolOfTheDayView {
         symbolOfTheDayContainer.addSubview(symbolOfTheDayImageView)
         symbolOfTheDayContainer.addSubview(favoriteIconImageView)
         addSubview(symbolNameLabel)
+        addSubview(soundButton)
         addSubview(meaningLabel)
         addSubview(meaningDescriptionLabel)
         addSubview(detailsLabel)
@@ -151,7 +157,14 @@ extension SymbolOfTheDayView {
         symbolNameLabel.layout {
             $0.top == symbolOfTheDayContainer.bottomAnchor + Constants.symbolNameTopInset
             $0.leading == leadingAnchor + Constants.horizontalInset
+            $0.trailing == soundButton.leadingAnchor - Constants.horizontalInset
+        }
+        
+        soundButton.layout {
+            $0.centerY == symbolNameLabel.centerYAnchor
             $0.trailing == trailingAnchor - Constants.horizontalInset
+            $0.height |=| Constants.soundIconImageViewSize.height
+            $0.width |=| Constants.soundIconImageViewSize.width
         }
         
         meaningLabel.layout {

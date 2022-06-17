@@ -53,15 +53,15 @@ class ViewControllerFactory {
          }
 
          func makeStoreViewController() -> BaseViewController {
-             .init()
+             StoreViewController()
          }
 
          func makeFavoritesViewController() -> BaseViewController {
-             .init()
+             FavoritesViewController()
          }
 
          func makeSettingsViewController() -> BaseViewController {
-             .init()
+             SettingsViewController()
          }
 
     

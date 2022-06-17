@@ -13,8 +13,6 @@ class CategoryDetailsViewController: BaseViewController {
     var symbol: [CategorySymbolCell.UIModel] = [
         .init(name: "Gye Nyame", symbol: .named("symbol-gye-nyame")),
         .init(name: "ODO NNYEW FIE KWAN", symbol: .named("symbol-odo-nnyew-fie-kwan"))
-        
-        
     ]
     
     override func viewDidLoad() {

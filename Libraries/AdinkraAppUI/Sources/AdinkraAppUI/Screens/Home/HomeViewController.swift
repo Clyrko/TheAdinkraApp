@@ -18,10 +18,10 @@ class HomeViewController: BaseViewController {
     private var symbolOfTheDayView = SymbolOfTheDayView()
     
     var category: [CategoryCell.UIModel] = [
-        .init(image: .named("symbol-abe-dua"), name: "Love"),
-        .init(image: .named("symbol-sankofa"), name: "Wealth"),
-        .init(image: .named("symbol-sankofa"), name: "Purity"),
-        .init(image: .named("symbol-sankofa"), name: "Charity")
+        .init(image: .named("symbol-akoma"), name: "Love"),
+        .init(image: .named("symbol-bese-saka"), name: "Wealth"),
+        .init(image: .named("symbol-ananse-ntentan"), name: "Wisdom"),
+        .init(image: .named("symbol-mpatapo"), name: "Peace")
     ]
     
     override func viewDidLoad() {
