@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon-18-edit.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

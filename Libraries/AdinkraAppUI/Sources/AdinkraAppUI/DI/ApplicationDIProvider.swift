@@ -59,6 +59,10 @@ extension ApplicationDIProvider {
         viewControllerFactory.makeSignInViewController()
     }
     
+    public func makeProfileViewController() -> UIViewController {
+        viewControllerFactory.makeProfileViewController()
+    }
+    
     public func setBase(
         viewController: UIViewController,
         window: UIWindow? = nil,

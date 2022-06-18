@@ -98,4 +98,8 @@ class ViewControllerFactory {
     func makeSignInViewController() -> SignInViewController {
         .init()
     }
+    
+    func makeProfileViewController() -> ProfileViewController {
+        .init()
+    }
 }
