@@ -13,7 +13,6 @@ class CategoryCell: UICollectionViewCell {
     private var overlay = UIView()
     private var titleLabel: StyleLabel!
     private var symbolImageView = UIImageView()
-    private var favoriteButton: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,24 +24,10 @@ class CategoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override var isSelected: Bool {
-//        didSet { update() }
-//    }
-    
-    func setup(with model: UIModel) {
-        symbolImageView.image = model.image
-        titleLabel.text = model.name
+    func setup(with category: CategoriesPresentationModel) {
+        symbolImageView.image = category.image
+        titleLabel.text = category.category
     }
-    
-//    private func update() {
-//        backgroundColor = isSelected ? UIColor.contrastBlue : .styleGrey20
-//        titleLabel.textColor = isSelected ? UIColor.styleWhite : .styleBlack
-//        if isSelected {
-//            imageView.setImageMaskColor(.styleWhite)
-//        } else {
-//            imageView.setImageMaskColor(.styleBlack)
-//        }
-//    }
 }
 
 // MARK: - LAYOUT
@@ -55,9 +40,6 @@ extension CategoryCell {
         backgroundImageView = .init(image: .named("symbol-background"))
         backgroundImageView.contentMode = .scaleToFill
         
-        favoriteButton = .init(image: .named("icon-30-favorite"))
-        favoriteButton.contentMode = .scaleAspectFit
-        
         symbolImageView.contentMode = .scaleAspectFit
         
         titleLabel = .init(
@@ -68,7 +50,6 @@ extension CategoryCell {
         
         contentView.addSubview(backgroundImageView)
         contentView.addSubview(symbolImageView)
-        contentView.addSubview(favoriteButton)
         contentView.addSubview(overlay)
         overlay.addSubview(titleLabel)
     }
@@ -81,13 +62,6 @@ extension CategoryCell {
             $0.centerX == contentView.centerXAnchor
             $0.height |=| Constants.symbolImageViewSize.height
             $0.width |=| Constants.symbolImageViewSize.width
-        }
-        
-        favoriteButton.layout {
-            $0.top == contentView.topAnchor + 10
-            $0.trailing == contentView.trailingAnchor - 12
-            $0.height |=| Constants.favoriteImageViewSize.height
-            $0.width |=| Constants.favoriteImageViewSize.width
         }
         
         overlay.layout {
@@ -103,13 +77,5 @@ extension CategoryCell {
             $0.leading == overlay.leadingAnchor + 12
             $0.trailing == overlay.trailingAnchor - 12
         }
-    }
-}
-
-// MARK: - MODEL
-extension CategoryCell {
-    struct UIModel {
-        let image: UIImage?
-        let name: String
     }
 }

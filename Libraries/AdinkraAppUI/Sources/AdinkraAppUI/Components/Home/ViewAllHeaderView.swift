@@ -5,7 +5,7 @@ import Foundation
      
  }
 
- class ViewAllHeaderView: UIView {
+ class ViewAllHeaderView: UIControl {
      private var titleLabel: StyleLabel!
      private var viewAllButton: StyleButton!
      
@@ -24,12 +24,16 @@ import Foundation
      required init?(coder: NSCoder) {
          fatalError("init(coder:) has not been implemented")
      }
-    
+     
+     @objc private func onTapAction(sender: UIControl){
+         self.onViewAllAction?()
+     }
  }
 
  // MARK: - LAYOUT
  extension ViewAllHeaderView {
      private func initializeViews() {
+         addTarget(self, action: #selector(onTapAction(sender:)), for: .touchUpInside)
          titleLabel = .init(
             with: .header2,
             textColor: .styleBlack,
@@ -39,10 +43,7 @@ import Foundation
          viewAllButton = .init(with: .primaryDefault, title: "View All")
          viewAllButton.backgroundColor = .clear
          viewAllButton.titleColor = .styleBlack
-         viewAllButton.onTapAction = { [weak self] in
-             self?.onViewAllAction?()
-         }
-
+         
          addSubview(titleLabel)
          addSubview(viewAllButton)
      }

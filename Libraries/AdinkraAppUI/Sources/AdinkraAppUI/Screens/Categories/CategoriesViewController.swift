@@ -11,13 +11,15 @@ class CategoriesViewController: BaseViewController {
     private var searchBar = StyleSearchBar()
     private var collectionView: UICollectionView!
     
-    var category: [CategoryCell.UIModel] = [
-        .init(image: .named("symbol-akoma"), name: "Love"),
-        .init(image: .named("symbol-sankofa"), name: "Wealth"),
-        .init(image: .named("symbol-gye-nyame"), name: "Purity"),
-        .init(image: .named("symbol-odo-nnyew-fie-kwan"), name: "Charity"),
-        .init(image: .named("symbol-sankofa"), name: "Wisdom"),
-        .init(image: .named("symbol-akofena"), name: "Knowledge")
+    var category: [CategoriesPresentationModel] = [
+        .init(id: 1, category: "Love", image: .named("symbol-akoma")),
+        .init(id: 2, category: "Power", image: .named("symbol-adinkrahene")),
+        .init(id: 3, category: "Strength", image: .named("symbol-aban")),
+        .init(id: 4, category: "Wisdom", image: .named("symbol-akoma")),
+        .init(id: 5, category: "Home", image: .named("symbol-akoma")),
+        .init(id: 6, category: "Peace", image: .named("symbol-mpatapo")),
+        .init(id: 7, category: "War", image: .named("symbol-akoben")),
+        .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru"))
     ]
     
     override func viewDidLoad() {

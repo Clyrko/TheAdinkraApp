@@ -7,6 +7,10 @@ private enum Constants {
     static let scanIconImageViewSize = CGSize(width: 24, height: 24)
     static let itemSize = CGSize(width: 152, height: 136)
     static let horizontalInset: CGFloat = 30
+    static let verticalInset: CGFloat = 16
+    static let viewInset: CGFloat = 40
+    static let collectionViewHeight: CGFloat = 170
+    static let collectionSpacing: CGFloat = 20
 }
 
 class HomeViewController: BaseViewController {
@@ -15,15 +19,27 @@ class HomeViewController: BaseViewController {
     private var scanIconImageView: UIImageView!
     private var searchBar = StyleSearchBar()
     private var viewAllSymbolsView = ViewAllHeaderView()
+    private var viewAllCategoriesView = ViewAllHeaderView()
     private var collectionView: UICollectionView!
     private var symbolOfTheDayView = SymbolOfTheDayView()
     private var player: AVAudioPlayer!
     
-    var category: [CategoryCell.UIModel] = [
-        .init(image: .named("symbol-akoma"), name: "Love"),
-        .init(image: .named("symbol-bese-saka"), name: "Wealth"),
-        .init(image: .named("symbol-ananse-ntentan"), name: "Wisdom"),
-        .init(image: .named("symbol-mpatapo"), name: "Peace")
+//    var category: [CategoryCell.UIModel] = [
+//        .init(image: .named("symbol-akoma"), name: "Love"),
+//        .init(image: .named("symbol-bese-saka"), name: "Wealth"),
+//        .init(image: .named("symbol-ananse-ntentan"), name: "Wisdom"),
+//        .init(image: .named("symbol-mpatapo"), name: "Peace")
+//    ]
+    
+    var category: [CategoriesPresentationModel] = [
+        .init(id: 1, category: "Love", image: .named("symbol-akoma")),
+        .init(id: 2, category: "Power", image: .named("symbol-adinkrahene")),
+        .init(id: 3, category: "Strength", image: .named("symbol-aban")),
+        .init(id: 4, category: "Wisdom", image: .named("symbol-akoma")),
+        .init(id: 5, category: "Home", image: .named("symbol-akoma")),
+        .init(id: 6, category: "Peace", image: .named("symbol-mpatapo")),
+        .init(id: 7, category: "War", image: .named("symbol-akoben")),
+        .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru"))
     ]
     
     override func viewDidLoad() {
@@ -35,6 +51,11 @@ class HomeViewController: BaseViewController {
     
     private func showAllSymbolScreen() {
         let controller = applicationDIProvider.makeViewAllSymbolsViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    private func showAllCategoriesScreen() {
+        let controller = applicationDIProvider.makeCategoriesViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -62,6 +83,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         category.count
     }
@@ -79,12 +101,6 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.showSymbolDetailsScreen()
     }
-    
-    //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    //        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ViewAllHeaderView.Identifier, for: indexPath) as? ViewAllHeaderView else { fatalError() }
-    //        header.title = "Categories"
-    //        return header
-    //    }
 }
 
 //MARK: - LAYOUT
@@ -92,8 +108,6 @@ extension HomeViewController {
     private func initializeView() {
         
         pageHeader.title = "Home"
-        //        pageHeader.onProfileAction = { [weak self] in
-        //        }
         
         scanIconImageView = .init(image: .named("icon-24-scan"))
         scanIconImageView.contentMode = .scaleAspectFit
@@ -110,13 +124,18 @@ extension HomeViewController {
             self?.showAllSymbolScreen()
         }
         
+        viewAllCategoriesView.title = "Categories"
+        viewAllCategoriesView.onViewAllAction = { [weak self] in
+            self?.showAllCategoriesScreen()
+        }
+        
         symbolOfTheDayView.onPlaySoundAction = { [weak self] in
             self?.playSound()
         }
         
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.minimumInteritemSpacing = 20
+        collectionViewFlowLayout.minimumInteritemSpacing = Constants.collectionSpacing
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -131,6 +150,7 @@ extension HomeViewController {
         view.addSubview(scanIconImageView)
         view.addSubview(searchBar)
         view.addSubview(viewAllSymbolsView)
+        view.addSubview(viewAllCategoriesView)
         view.addSubview(collectionView)
         view.addSubview(symbolOfTheDayView)
     }
@@ -143,38 +163,44 @@ extension HomeViewController {
         }
         
         helloLabel.layout {
-            $0.top == pageHeader.bottomAnchor + 40
+            $0.top == pageHeader.bottomAnchor + Constants.viewInset
             $0.leading == view.leadingAnchor + Constants.horizontalInset
         }
         
         scanIconImageView.layout {
             $0.centerY == helloLabel.centerYAnchor
-            $0.trailing == view.trailingAnchor - 40
+            $0.trailing == view.trailingAnchor - Constants.viewInset
             $0.height |=| Constants.scanIconImageViewSize.height
             $0.width |=| Constants.scanIconImageViewSize.width
         }
         
         searchBar.layout {
-            $0.top == helloLabel.bottomAnchor + 16
+            $0.top == helloLabel.bottomAnchor + Constants.verticalInset
             $0.leading == view.leadingAnchor + Constants.horizontalInset
             $0.trailing == view.trailingAnchor - Constants.horizontalInset
         }
         
         viewAllSymbolsView.layout {
-            $0.top == searchBar.bottomAnchor + 16
+            $0.top == searchBar.bottomAnchor + Constants.verticalInset
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
+        
+        viewAllCategoriesView.layout {
+            $0.top == viewAllSymbolsView.bottomAnchor + Constants.verticalInset
             $0.leading == view.leadingAnchor
             $0.trailing == view.trailingAnchor
         }
         
         collectionView.layout {
-            $0.top == viewAllSymbolsView.bottomAnchor + 20
+            $0.top == viewAllCategoriesView.bottomAnchor
             $0.leading == view.leadingAnchor + Constants.horizontalInset.halved
             $0.trailing == view.trailingAnchor - Constants.horizontalInset.halved
-            $0.height |=| 170
+            $0.height |=| Constants.collectionViewHeight
         }
         
         symbolOfTheDayView.layout {
-            $0.top == collectionView.bottomAnchor + 50
+            $0.top == collectionView.bottomAnchor + Constants.viewInset
             $0.leading == view.leadingAnchor
             $0.trailing == view.trailingAnchor
         }
