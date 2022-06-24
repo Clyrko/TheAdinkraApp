@@ -24,13 +24,6 @@ class HomeViewController: BaseViewController {
     private var symbolOfTheDayView = SymbolOfTheDayView()
     private var player: AVAudioPlayer!
     
-//    var category: [CategoryCell.UIModel] = [
-//        .init(image: .named("symbol-akoma"), name: "Love"),
-//        .init(image: .named("symbol-bese-saka"), name: "Wealth"),
-//        .init(image: .named("symbol-ananse-ntentan"), name: "Wisdom"),
-//        .init(image: .named("symbol-mpatapo"), name: "Peace")
-//    ]
-    
     var category: [CategoriesPresentationModel] = [
         .init(id: 1, category: "Love", image: .named("symbol-akoma")),
         .init(id: 2, category: "Power", image: .named("symbol-adinkrahene")),
@@ -39,7 +32,9 @@ class HomeViewController: BaseViewController {
         .init(id: 5, category: "Home", image: .named("symbol-akoma")),
         .init(id: 6, category: "Peace", image: .named("symbol-mpatapo")),
         .init(id: 7, category: "War", image: .named("symbol-akoben")),
-        .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru"))
+        .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru")),
+        .init(id: 9, category: "Self", image: .named("symbol-ani-bere-a-enso-gya")),
+        .init(id: 10, category: "Nature", image: .named("symbol-asase-ye-duru"))
     ]
     
     override func viewDidLoad() {
