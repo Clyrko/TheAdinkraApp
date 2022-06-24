@@ -8,7 +8,7 @@ private enum Constants {
 
 class SymbolDetailsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
-    private var symbolView: SymbolView!
+    private var symbolView = SymbolView()
     private var symbolNameLabel: StyleLabel!
     private var symbolPronunciationButton: StyleButton!
     private var meaningLabel: StyleLabel!
@@ -16,11 +16,21 @@ class SymbolDetailsViewController: BaseViewController {
     private var detailsLabel: StyleLabel!
     private var detailsDescriptionLabel: StyleLabel!
     
+    var symbol: SymbolPresentationModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .styleWhite
         initializeView()
         layoutConstraint()
+        populateSymbolDetails()
+    }
+    
+    private func populateSymbolDetails() {
+        symbolView.symbol = symbol.symbol
+        symbolView.title = symbol.title
+        meaningDescriptionLabel.text = symbol.meaning
+        detailsDescriptionLabel.text = symbol.description
     }
 }
 
@@ -31,16 +41,10 @@ extension SymbolDetailsViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         
-        symbolView = .init(
-            symbol: .named("symbol-akofena"),
-            title: "Akofena"
-        )
-        
         symbolNameLabel = .init(
             with: .bodyBalsamiqBold,
             textColor: .mainOrange,
-            textAlignment: .left,
-            text: "Akofena"
+            textAlignment: .left
         )
         
         symbolPronunciationButton = .init(with: .indicator, title: nil)
@@ -59,12 +63,8 @@ extension SymbolDetailsViewController {
         meaningDescriptionLabel = .init(
             with: .bodyMainRegular,
             textColor: .styleBlack,
-            textAlignment: .left,
+            textAlignment: .left
             //FIXME: add quotes or maybe another section
-            text: """
-                sword of war
-                symbol of courage, valor, and heroism
-                """
         )
         
         detailsLabel = .init(
@@ -77,8 +77,7 @@ extension SymbolDetailsViewController {
         detailsDescriptionLabel = .init(
             with: .bodyMainRegular,
             textColor: .styleBlack,
-            textAlignment: .left,
-            text: "The crossed swords were a popular motif in the heraldic shields of many former Akan states. In addition to recognizing courage and valor, the swords can represent legitimate state authority."
+            textAlignment: .left
         )
         
         view.addSubview(navBar)

@@ -31,6 +31,11 @@ class HomeViewController: BaseViewController {
         layoutConstraint()
     }
     
+    private func showAllSymbolScreen() {
+        let controller = applicationDIProvider.makeViewAllSymbolsViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     private func showSymbolDetailsScreen() {
         let controller = applicationDIProvider.makeCategoriesViewController()
         navigationController?.pushViewController(controller, animated: true)
@@ -86,8 +91,9 @@ extension HomeViewController {
         )
         
         viewAllSymbolsView.title = "Symbols"
-//        viewAllSymbolsView.onViewAllAction = { [weak self] in
-//        }
+        viewAllSymbolsView.onViewAllAction = { [weak self] in
+            self?.showAllSymbolScreen()
+        }
         
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal

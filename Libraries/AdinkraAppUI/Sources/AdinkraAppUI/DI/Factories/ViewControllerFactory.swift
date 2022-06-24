@@ -50,6 +50,7 @@ class ViewControllerFactory {
 
          func makeHomeViewController() -> BaseViewController {
              HomeViewController()
+//             ViewAllSymbolsViewController()
          }
 
          func makeStoreViewController() -> BaseViewController {
