@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import AVFoundation
 
 private enum Constants {
     static let profileImageViewSize = CGSize(width: 50, height: 50)
@@ -16,6 +17,7 @@ class HomeViewController: BaseViewController {
     private var viewAllSymbolsView = ViewAllHeaderView()
     private var collectionView: UICollectionView!
     private var symbolOfTheDayView = SymbolOfTheDayView()
+    private var player: AVAudioPlayer!
     
     var category: [CategoryCell.UIModel] = [
         .init(image: .named("symbol-akoma"), name: "Love"),
@@ -39,6 +41,19 @@ class HomeViewController: BaseViewController {
     private func showSymbolDetailsScreen() {
         let controller = applicationDIProvider.makeCategoriesViewController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    private func playSound() {
+        guard let url = Bundle.module.url(forResource: "sankofa", withExtension: "mp3") else {
+            print("File not found")
+            return
+        }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.play()
+        } catch {
+            print(error)
+        }
     }
 }
 
@@ -93,6 +108,10 @@ extension HomeViewController {
         viewAllSymbolsView.title = "Symbols"
         viewAllSymbolsView.onViewAllAction = { [weak self] in
             self?.showAllSymbolScreen()
+        }
+        
+        symbolOfTheDayView.onPlaySoundAction = { [weak self] in
+            self?.playSound()
         }
         
         let collectionViewFlowLayout = UICollectionViewFlowLayout()

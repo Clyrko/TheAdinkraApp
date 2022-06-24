@@ -28,6 +28,8 @@ class SymbolOfTheDayView: UIView {
     private var detailsLabel: StyleLabel!
     private var detailsDescriptionLabel: StyleLabel!
     
+    var onPlaySoundAction: Closure.Block?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeView()
@@ -81,7 +83,11 @@ extension SymbolOfTheDayView {
         soundButton = .init(with: .indicator, title: nil)
         soundButton.iconImageView.image = .named("icon-28-sound")
         soundButton.iconImageView.setImageMaskColor(.mainOrange)
+        soundButton.canHighlight = false
         soundButton.backgroundColor = .styleWhite
+        soundButton.onTapAction = { [weak self] in
+            self?.onPlaySoundAction?()
+        }
         
         meaningLabel = .init(
             with: .header2,
