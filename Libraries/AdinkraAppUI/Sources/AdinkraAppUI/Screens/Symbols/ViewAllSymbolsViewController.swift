@@ -12,7 +12,7 @@ class ViewAllSymbolsViewController: BaseViewController {
     private var titleLabel: StyleLabel!
     private var collectionView: UICollectionView!
     
-    var symbol: [SymbolPresentationModel] = [
+    private var symbols: [SymbolPresentationModel] = [
         .init(id: 1, symbol: .named("symbol-aban"), title: "Aban", meaning: "A symbol of strength, seat of power, authority, and magnificence.", description: "Aban is the Akan word for “fortress” or “castle.”", pronunciation: "LOL", categories: ["Strength", "Power"], isFavorite: false),
         .init(id: 2, symbol: .named("symbol-abe-dua"), title: "Abe Dua", meaning: "Abe Dua means palm tree.", description: "The palm tree is a symbol resourcefulnees because many diverse products emanate from that single tree: wine, oil, brooms, roofing material, etc.", pronunciation: "LOL", categories: ["Wealth", "Resourcefulness"], isFavorite: false),
         .init(id: 3, symbol: .named("symbol-adinkrahene"), title: "Adinkrahene", meaning: "Adinkrahene means King of the Adinkra symbols. It is a symbol for authority, leadership, and charisma.", description: "The etymology of Adinkrahene is Adinkra + ɔhene, literally “Adinkra king” or “king of the Adinkras.” This symbol is reportedly the inspiration of the design of the other symbols. The elegant figure with three concentric circles is easy to draw and its abstract form connotes the importance of ideas and concepts, which are the essence of Adinkra–they are visual representations of important concepts in Akan philosophy.", pronunciation: "LOL", categories: ["Authority", "Leadership"], isFavorite: false),
@@ -85,17 +85,14 @@ class ViewAllSymbolsViewController: BaseViewController {
 
 //MARK: - COLLECTIONVIEW
 extension ViewAllSymbolsViewController: UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        26
-//    }
-//
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        symbol.count
+        symbols.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SymbolCell.Identifier, for: indexPath) as? SymbolCell else { fatalError() }
-        cell.setup(with: symbol[indexPath.row])
+        cell.setup(with: symbols[indexPath.row])
         return cell
     }
     
@@ -105,9 +102,19 @@ extension ViewAllSymbolsViewController: UICollectionViewDataSource,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = SymbolDetailsViewController()
-        controller.symbol = symbol[indexPath.row]
+        controller.symbols = symbols[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        26
+//    }
+//
+//    func indexTitles(for collectionView: UICollectionView) -> [String]? {
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
+//    }
 }
 
 

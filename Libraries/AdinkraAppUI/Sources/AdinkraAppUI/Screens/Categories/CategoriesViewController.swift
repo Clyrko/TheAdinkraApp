@@ -19,7 +19,9 @@ class CategoriesViewController: BaseViewController {
         .init(id: 5, category: "Home", image: .named("symbol-akoma")),
         .init(id: 6, category: "Peace", image: .named("symbol-mpatapo")),
         .init(id: 7, category: "War", image: .named("symbol-akoben")),
-        .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru"))
+        .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru")),
+        .init(id: 9, category: "Self", image: .named("symbol-ani-bere-a-enso-gya")),
+        .init(id: 10, category: "Nature", image: .named("symbol-asase-ye-duru"))
     ]
     
     override func viewDidLoad() {

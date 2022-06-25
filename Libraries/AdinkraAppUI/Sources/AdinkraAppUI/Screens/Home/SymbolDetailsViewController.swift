@@ -16,7 +16,7 @@ class SymbolDetailsViewController: BaseViewController {
     private var detailsLabel: StyleLabel!
     private var detailsDescriptionLabel: StyleLabel!
     
-    var symbol: SymbolPresentationModel!
+    var symbols: SymbolPresentationModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +27,10 @@ class SymbolDetailsViewController: BaseViewController {
     }
     
     private func populateSymbolDetails() {
-        symbolView.symbol = symbol.symbol
-        symbolView.title = symbol.title
-        meaningDescriptionLabel.text = symbol.meaning
-        detailsDescriptionLabel.text = symbol.description
+        symbolView.symbol = symbols.symbol
+        symbolView.title = symbols.title
+        meaningDescriptionLabel.text = symbols.meaning
+        detailsDescriptionLabel.text = symbols.description
     }
 }
 
