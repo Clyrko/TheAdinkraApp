@@ -23,13 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="tTp-ec-njf">
+                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-aK-yIj">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" name="main-orange"/>
-                                <color key="tintColor" name="style-white"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adinkra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-SG-9wX">
-                                <rect key="frame" x="97" y="409.5" width="220.5" height="77"/>
+                                <rect key="frame" x="98" y="410.5" width="218.5" height="75"/>
                                 <fontDescription key="fontDescription" name="BalsamiqSans-Bold" family="Balsamiq Sans" pointSize="64"/>
                                 <color key="textColor" name="style-white"/>
                                 <nil key="highlightedColor"/>
@@ -38,11 +37,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tTp-ec-njf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="586-Oy-pdd"/>
-                            <constraint firstAttribute="bottom" secondItem="tTp-ec-njf" secondAttribute="bottom" id="7FP-9d-Zn6"/>
+                            <constraint firstItem="MoA-aK-yIj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="3S0-aE-86X"/>
                             <constraint firstItem="IJh-SG-9wX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="G6d-If-DRB"/>
-                            <constraint firstItem="tTp-ec-njf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="a08-SM-nEd"/>
-                            <constraint firstItem="tTp-ec-njf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bYd-0b-FQ2"/>
+                            <constraint firstItem="MoA-aK-yIj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VyC-hk-tDT"/>
+                            <constraint firstAttribute="bottom" secondItem="MoA-aK-yIj" secondAttribute="bottom" id="bro-zM-N1J"/>
+                            <constraint firstItem="MoA-aK-yIj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cA1-aX-Dax"/>
                             <constraint firstItem="IJh-SG-9wX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="i38-Wp-H2z"/>
                         </constraints>
                     </view>

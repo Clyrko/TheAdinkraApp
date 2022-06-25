@@ -12,7 +12,7 @@ private enum Constants {
     static let collectionViewHeight: CGFloat = 170
     static let collectionSpacing: CGFloat = 20
     static let width = UIScreen.width
-    static let scrollViewHeight: CGFloat = 846
+    static let scrollViewHeight: CGFloat = 1000
 }
 
 class HomeViewController: BaseViewController {
