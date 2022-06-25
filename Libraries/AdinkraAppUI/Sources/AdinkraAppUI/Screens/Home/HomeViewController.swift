@@ -8,21 +8,28 @@ private enum Constants {
     static let itemSize = CGSize(width: 152, height: 136)
     static let horizontalInset: CGFloat = 30
     static let verticalInset: CGFloat = 16
-    static let viewInset: CGFloat = 40
+    static let viewInset: CGFloat = 20
     static let collectionViewHeight: CGFloat = 170
     static let collectionSpacing: CGFloat = 20
+    static let width = UIScreen.width
+    static let scrollViewHeight: CGFloat = 846
 }
 
 class HomeViewController: BaseViewController {
     private var pageHeader = TitleHeaderView()
     private var helloLabel: StyleLabel!
     private var scanIconImageView: UIImageView!
+    private var scrollView: UIScrollView!
+    private var container = UIView()
     private var searchBar = StyleSearchBar()
     private var viewAllSymbolsView = ViewAllHeaderView()
     private var viewAllCategoriesView = ViewAllHeaderView()
     private var collectionView: UICollectionView!
     private var symbolOfTheDayView = SymbolOfTheDayView()
     private var player: AVAudioPlayer!
+    
+    private var scrollViewHeightConstraint: NSLayoutConstraint!
+    private var containerViewHeightConstraint: NSLayoutConstraint!
     
     private var category: [CategoriesPresentationModel] = [
         .init(id: 1, category: "Love", image: .named("symbol-akoma")),
@@ -160,11 +167,17 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
 //MARK: - LAYOUT
 extension HomeViewController {
     private func initializeView() {
-        
         pageHeader.title = "Home"
         
         scanIconImageView = .init(image: .named("icon-24-scan"))
         scanIconImageView.contentMode = .scaleAspectFit
+        
+        scrollView = .init()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isScrollEnabled = true
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.backgroundColor = .clear
+        container.backgroundColor = .styleWhite
         
         helloLabel = .init(
             with: .header2,
@@ -201,11 +214,13 @@ extension HomeViewController {
         view.addSubview(pageHeader)
         view.addSubview(helloLabel)
         view.addSubview(scanIconImageView)
-        view.addSubview(searchBar)
-        view.addSubview(viewAllSymbolsView)
-        view.addSubview(viewAllCategoriesView)
-        view.addSubview(collectionView)
-        view.addSubview(symbolOfTheDayView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(container)
+        container.addSubview(searchBar)
+        container.addSubview(viewAllSymbolsView)
+        container.addSubview(viewAllCategoriesView)
+        container.addSubview(collectionView)
+        container.addSubview(symbolOfTheDayView)
     }
     
     private func layoutConstraint() {
@@ -218,6 +233,7 @@ extension HomeViewController {
         helloLabel.layout {
             $0.top == pageHeader.bottomAnchor + Constants.viewInset
             $0.leading == view.leadingAnchor + Constants.horizontalInset
+            $0.height |=| 24
         }
         
         scanIconImageView.layout {
@@ -227,35 +243,55 @@ extension HomeViewController {
             $0.width |=| Constants.scanIconImageViewSize.width
         }
         
-        searchBar.layout {
+        scrollView.layout {
             $0.top == helloLabel.bottomAnchor + Constants.verticalInset
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+            $0.bottom == view.bottomAnchor
+            $0.width |=| Constants.width
+        }
+        scrollViewHeightConstraint = scrollView.heightAnchor.constraint(equalToConstant: Constants.scrollViewHeight)
+        scrollViewHeightConstraint.isActive = true
+        
+        container.layout {
+            $0.top == scrollView.topAnchor
+            $0.leading == scrollView.leadingAnchor
+            $0.trailing == scrollView.trailingAnchor
+            $0.bottom == scrollView.bottomAnchor
+            $0.width |=| Constants.width
+        }
+        containerViewHeightConstraint = container.heightAnchor.constraint(equalToConstant: Constants.scrollViewHeight)
+        containerViewHeightConstraint.isActive = true
+        
+        searchBar.layout {
+            $0.top == container.topAnchor
+            $0.leading == container.leadingAnchor + Constants.horizontalInset
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
         
         viewAllSymbolsView.layout {
             $0.top == searchBar.bottomAnchor + Constants.verticalInset
-            $0.leading == view.leadingAnchor
-            $0.trailing == view.trailingAnchor
+            $0.leading == container.leadingAnchor
+            $0.trailing == container.trailingAnchor
         }
         
         viewAllCategoriesView.layout {
             $0.top == viewAllSymbolsView.bottomAnchor + Constants.verticalInset
-            $0.leading == view.leadingAnchor
-            $0.trailing == view.trailingAnchor
+            $0.leading == container.leadingAnchor
+            $0.trailing == container.trailingAnchor
         }
         
         collectionView.layout {
             $0.top == viewAllCategoriesView.bottomAnchor
-            $0.leading == view.leadingAnchor + Constants.horizontalInset.halved
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset.halved
+            $0.leading == container.leadingAnchor + Constants.horizontalInset.halved
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset.halved
             $0.height |=| Constants.collectionViewHeight
         }
         
         symbolOfTheDayView.layout {
             $0.top == collectionView.bottomAnchor + Constants.viewInset
-            $0.leading == view.leadingAnchor
-            $0.trailing == view.trailingAnchor
+            $0.leading == container.leadingAnchor
+            $0.trailing == container.trailingAnchor
         }
     }
 }
