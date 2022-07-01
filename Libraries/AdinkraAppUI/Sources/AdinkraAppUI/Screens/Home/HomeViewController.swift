@@ -4,7 +4,7 @@ import AVFoundation
 
 private enum Constants {
     static let profileImageViewSize = CGSize(width: 50, height: 50)
-    static let scanIconImageViewSize = CGSize(width: 24, height: 24)
+    static let scanButtonSize = CGSize(width: 24, height: 24)
     static let itemSize = CGSize(width: 152, height: 136)
     static let horizontalInset: CGFloat = 30
     static let verticalInset: CGFloat = 16
@@ -18,7 +18,7 @@ private enum Constants {
 class HomeViewController: BaseViewController {
     private var pageHeader = TitleHeaderView()
     private var helloLabel: StyleLabel!
-    private var scanIconImageView: UIImageView!
+    private var scanButton: StyleButton!
     private var scrollView: UIScrollView!
     private var container = UIView()
     private var searchBar = StyleSearchBar()
@@ -113,6 +113,11 @@ class HomeViewController: BaseViewController {
         layoutConstraint()
     }
     
+    private func showScanScreen() {
+        let controller = applicationDIProvider.makeScanViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     private func showAllSymbolScreen() {
         let controller = applicationDIProvider.makeViewAllSymbolsViewController()
         navigationController?.pushViewController(controller, animated: true)
@@ -169,8 +174,13 @@ extension HomeViewController {
     private func initializeView() {
         pageHeader.title = "Home"
         
-        scanIconImageView = .init(image: .named("icon-24-scan"))
-        scanIconImageView.contentMode = .scaleAspectFit
+        scanButton = .init(with: .indicator, title: nil)
+        scanButton.iconImageView.image = .named("icon-24-scan")
+        scanButton.backgroundColor = .styleWhite
+        scanButton.canHighlight = false
+        scanButton.onTapAction = { [weak self] in
+            self?.showScanScreen()
+        }
         
         scrollView = .init()
         scrollView.showsVerticalScrollIndicator = false
@@ -213,7 +223,7 @@ extension HomeViewController {
         
         view.addSubview(pageHeader)
         view.addSubview(helloLabel)
-        view.addSubview(scanIconImageView)
+        view.addSubview(scanButton)
         view.addSubview(scrollView)
         scrollView.addSubview(container)
         container.addSubview(searchBar)
@@ -236,11 +246,11 @@ extension HomeViewController {
             $0.height |=| 24
         }
         
-        scanIconImageView.layout {
+        scanButton.layout {
             $0.centerY == helloLabel.centerYAnchor
             $0.trailing == view.trailingAnchor - Constants.viewInset
-            $0.height |=| Constants.scanIconImageViewSize.height
-            $0.width |=| Constants.scanIconImageViewSize.width
+            $0.height |=| Constants.scanButtonSize.height
+            $0.width |=| Constants.scanButtonSize.width
         }
         
         scrollView.layout {

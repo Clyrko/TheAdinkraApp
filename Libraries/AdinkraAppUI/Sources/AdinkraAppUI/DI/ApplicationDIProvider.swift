@@ -31,6 +31,10 @@ extension ApplicationDIProvider {
     //        viewControllerFactory.makeHomeViewController()
     //    }
     
+    public func makeScanViewController() -> UIViewController {
+        viewControllerFactory.makeScanViewController()
+    }
+    
     public func makeSymbolDetailsController() -> UIViewController {
         viewControllerFactory.makeSymbolDetailsViewController()
     }

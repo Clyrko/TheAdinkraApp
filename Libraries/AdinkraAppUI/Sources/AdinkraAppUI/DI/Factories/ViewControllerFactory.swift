@@ -72,6 +72,10 @@ class ViewControllerFactory {
 //        return navigationController
 //    }
     
+    func makeScanViewController() -> ScanViewController {
+        .init()
+    }
+    
     func makeSymbolDetailsViewController() -> SymbolDetailsViewController {
         .init()
     }
