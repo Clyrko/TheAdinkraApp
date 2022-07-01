@@ -28,7 +28,7 @@
                                 <color key="backgroundColor" name="main-orange"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adinkra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-SG-9wX">
-                                <rect key="frame" x="98" y="410.5" width="218.5" height="75"/>
+                                <rect key="frame" x="97" y="409.5" width="220.5" height="77"/>
                                 <fontDescription key="fontDescription" name="BalsamiqSans-Bold" family="Balsamiq Sans" pointSize="64"/>
                                 <color key="textColor" name="style-white"/>
                                 <nil key="highlightedColor"/>
