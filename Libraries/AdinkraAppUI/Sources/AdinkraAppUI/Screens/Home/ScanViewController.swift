@@ -3,7 +3,6 @@ import UIKit
 import CoreML
 import Vision
 import ImageIO
-import AdinkraAppMLModel
 
 private enum Constants {
     static let cornerRadius: CGFloat = 8
@@ -22,8 +21,7 @@ class ScanViewController: BaseViewController {
 //            Line that should work
 //            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
             
-            let model = try VNCoreMLModel(for: AdinkraAppMLModel.AdinkraAppObjectDetectionOne().model)
-//            let model = try VNCoreMLModel(for: modelTest)
+            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
 
 
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
