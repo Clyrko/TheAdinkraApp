@@ -30,11 +30,6 @@ class CategoriesViewController: BaseViewController {
         initializeView()
         layoutConstraint()
     }
-    
-    private func showCategoryDetailsScreen() {
-        let controller = applicationDIProvider.makeCategoryDetailsViewController()
-        navigationController?.pushViewController(controller, animated: true)
-    }
 }
 
 //MARK: - COLLECTIONVIEW
@@ -58,7 +53,9 @@ extension CategoriesViewController: UICollectionViewDataSource,UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.showCategoryDetailsScreen()
+        let controller = CategoryDetailsViewController()
+        controller.categories = category[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

@@ -123,6 +123,11 @@ class HomeViewController: BaseViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     private func showAllCategoriesScreen() {
         let controller = applicationDIProvider.makeCategoriesViewController()
         navigationController?.pushViewController(controller, animated: true)
@@ -163,8 +168,8 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = CategoriesViewController()
-        controller.category = category
+        let controller = CategoryDetailsViewController()
+        controller.categories = category[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -173,6 +178,9 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
 extension HomeViewController {
     private func initializeView() {
         pageHeader.title = "Home"
+        pageHeader.onProfileAction = { [weak self] in
+            self?.showProfileScreen()
+        }
         
         scanButton = .init(with: .indicator, title: nil)
         scanButton.iconImageView.image = .named("icon-24-scan")

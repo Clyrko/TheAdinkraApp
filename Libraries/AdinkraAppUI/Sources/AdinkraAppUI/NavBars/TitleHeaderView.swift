@@ -6,7 +6,6 @@ private enum Constants {
     static let height: CGFloat = UIDevice.hasNotch ? 100 : 80
 }
 
-
 class TitleHeaderView: UIView {
     private var titleLabel: StyleLabel!
     private var profilePictureButton = UIButton()
@@ -54,8 +53,7 @@ extension TitleHeaderView {
         addSubview(titleLabel)
     }
     
-    private func layoutConstraint()
-    {
+    private func layoutConstraint() {
         layout {
             $0.height |=| Constants.height
         }

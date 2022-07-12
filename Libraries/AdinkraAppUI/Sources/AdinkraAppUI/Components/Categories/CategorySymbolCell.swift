@@ -28,9 +28,9 @@ class CategorySymbolCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(with model: UIModel) {
-        titleLabel.text = model.name
-        symbolImageView.image = model.symbol
+    func setup(with category: SymbolPresentationModel) {
+        titleLabel.text = category.title
+        symbolImageView.image = category.symbol
     }
 }
 
@@ -102,10 +102,3 @@ extension CategorySymbolCell {
     }
 }
 
-//MARK: - Model
-extension CategorySymbolCell {
-    struct UIModel {
-        var name: String
-        var symbol: UIImage
-    }
-}

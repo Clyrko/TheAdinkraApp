@@ -13,26 +13,24 @@ class ScanViewController: BaseViewController {
     private var imageView = UIImageView()
     private var selectPhotoButton: StyleButton!
     private var symbolNameLabel: StyleLabel!
-//    private var modelTest = AdinkraAppMLModel.AdinkraAppObjectDetectionOne().model
     
-    
-    lazy var detectionRequest: VNCoreMLRequest = {
-        do {
-//            Line that should work
+//    lazy var detectionRequest: VNCoreMLRequest = {
+//        do {
+////            Line that should work
+////            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
+//
 //            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
-            
-            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
-
-
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processDetections(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFit
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-    }()
+//
+//
+//            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+//                self?.processDetections(for: request, error: error)
+//            })
+//            request.imageCropAndScaleOption = .scaleFit
+//            return request
+//        } catch {
+//            fatalError("Failed to load Vision ML model: \(error)")
+//        }
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,17 +46,17 @@ class ScanViewController: BaseViewController {
     }
     
     private func updateDetections(for image: UIImage) {
-        let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))
-        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+//        let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))
+//        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
 
-        DispatchQueue.global(qos: .userInitiated).async {
-            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation!)
-            do {
-                try handler.perform([self.detectionRequest])
-            } catch {
-                print("Failed to perform detection.\n\(error.localizedDescription)")
-            }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation!)
+//            do {
+//                try handler.perform([self.detectionRequest])
+//            } catch {
+//                print("Failed to perform detection.\n\(error.localizedDescription)")
+//            }
+//        }
     }
     
     private func processDetections(for request: VNRequest, error: Error?) {
