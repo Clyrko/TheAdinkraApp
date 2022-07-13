@@ -7,7 +7,7 @@ class CloseButton: UIButton {
     init(
         frame: CGRect = .zero,
         stroke: UIColor = .styleBlack,
-        fill: UIColor = .systemGray
+        fill: UIColor = .styleGray
     ) {
         self.strokeColor = stroke
         self.fillColor = fill

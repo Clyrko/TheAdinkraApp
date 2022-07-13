@@ -30,6 +30,11 @@ class CategoriesViewController: BaseViewController {
         initializeView()
         layoutConstraint()
     }
+    
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: - COLLECTIONVIEW
@@ -65,6 +70,10 @@ extension CategoriesViewController {
         navBar.onBackAction = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        navBar.onProfileAction = { [weak self] in
+            self?.showProfileScreen()
+        }
+        navBar.title = "Categories"
         
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .vertical

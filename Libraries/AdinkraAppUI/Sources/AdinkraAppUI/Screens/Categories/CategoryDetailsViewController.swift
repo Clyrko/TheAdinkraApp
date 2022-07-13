@@ -150,6 +150,11 @@ class CategoryDetailsViewController: BaseViewController {
         categoryImageView.category = categories.image
     }
     
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     private func showScanScreen() {
         let controller = applicationDIProvider.makeScanViewController()
         navigationController?.pushViewController(controller, animated: true)
@@ -279,6 +284,10 @@ extension CategoryDetailsViewController {
         navBar.onBackAction = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        navBar.onProfileAction = { [weak self] in
+            self?.showProfileScreen()
+        }
+        navBar.title = "Category Details"
         
         categoriesTitleLabel = .init(
             with: .header2,
@@ -301,7 +310,7 @@ extension CategoryDetailsViewController {
             self?.showScanScreen()
         }
         
-        horizontalLine.backgroundColor = .systemGray
+        horizontalLine.backgroundColor = .styleGray
         
         tableView = .init(frame: .zero, style: .grouped)
         tableView.backgroundColor = .styleWhite

@@ -97,6 +97,8 @@ extension ProfileViewController {
         navBar.onBackAction = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        navBar.profilePictureButton.isHidden = true
+        navBar.title = "Profile"
         
         tableView = .init(frame: .zero, style: .grouped)
         tableView.backgroundColor = .styleWhite
@@ -108,7 +110,6 @@ extension ProfileViewController {
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.Identifier)
         tableView.register(ProfileHeader.self, forHeaderFooterViewReuseIdentifier: ProfileHeader.Identifier)
         tableView.register(ProfileFooter.self, forHeaderFooterViewReuseIdentifier: ProfileFooter.Identifier)
-        
         
         view.addSubview(navBar)
         view.addSubview(tableView)

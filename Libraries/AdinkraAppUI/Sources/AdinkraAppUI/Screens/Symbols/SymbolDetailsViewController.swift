@@ -32,6 +32,11 @@ class SymbolDetailsViewController: BaseViewController {
         meaningDescriptionLabel.text = symbols.meaning
         detailsDescriptionLabel.text = symbols.description
     }
+    
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: - LAYOUT
@@ -40,6 +45,10 @@ extension SymbolDetailsViewController {
         navBar.onBackAction = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        navBar.onProfileAction = { [weak self] in
+            self?.showProfileScreen()
+        }
+        navBar.title = "Symbol Details"
         
         symbolNameLabel = .init(
             with: .bodyBalsamiqBold,

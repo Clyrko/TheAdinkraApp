@@ -39,6 +39,9 @@ class SettingsViewController: BaseViewController {
 extension SettingsViewController {
     private func initializeView() {
         pageHeader.title = "Settings"
+        pageHeader.onProfileAction  = { [weak self] in
+            self?.showProfileScreen()
+        }
         
         notificationLabel = .init(
             with: .bodyMainRegular,

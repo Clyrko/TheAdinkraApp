@@ -25,7 +25,7 @@ class BaseApplicationViewController: UIViewController {
     private var ftuxCard: FTUXTourCardView!
     private var ftuxCardTipXConstraint: NSLayoutConstraint?
     private var selectecdTintColor: UIColor = .mainOrange
-    private var defaultTintColor: UIColor = .systemGray
+    private var defaultTintColor: UIColor = .styleGray
     private var container = UIView()
     private var tabBar: TabBar!
     private var selectedIndex: Int = .zero

@@ -5,6 +5,10 @@ extension UIColor {
         .init(named: "style-white", in: .module, compatibleWith: nil)!
     }
     
+    class var styleGray: UIColor {
+        .init(named: "styleGray", in: .module, compatibleWith: nil)!
+    }
+    
     class var solidBlack: UIColor {
         return .init(red: .zero, green: .zero, blue: .zero, alpha: 1)
     }

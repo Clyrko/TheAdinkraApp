@@ -81,6 +81,11 @@ class ViewAllSymbolsViewController: BaseViewController {
         initializeView()
         layoutConstraint()
     }
+    
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: - COLLECTIONVIEW
@@ -124,6 +129,10 @@ extension ViewAllSymbolsViewController {
         navBar.onBackAction = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        navBar.onProfileAction = { [weak self] in
+            self?.showProfileScreen()
+        }
+        navBar.title = "View All Symbols"
         
         titleLabel = .init(
             with: .header2,

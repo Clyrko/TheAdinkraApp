@@ -51,7 +51,7 @@ extension StyleSearchBar {
     private func initializeView() {
         backgroundColor = .clear
         dropCorner(Constants.cornerRadius)
-        borderlize(width: 1, color: .systemGray)
+        borderlize(width: 1, color: .styleGray)
 
         searchBar = .init()
         searchBar.barTintColor = .styleBlack

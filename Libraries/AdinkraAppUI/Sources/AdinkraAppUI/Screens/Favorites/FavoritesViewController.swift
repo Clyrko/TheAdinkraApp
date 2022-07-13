@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 private enum Constants {
-    static let tableViewTopInset: CGFloat = 60
 }
 
 class FavoritesViewController: BaseViewController {
@@ -22,6 +21,11 @@ class FavoritesViewController: BaseViewController {
         view.backgroundColor = .styleWhite
         initializeView()
         layoutConstraint()
+    }
+    
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -46,6 +50,9 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
 extension FavoritesViewController {
     private func initializeView() {
         pageHeader.title = "Favorites"
+        pageHeader.onProfileAction  = { [weak self] in
+            self?.showProfileScreen()
+        }
         
         tableView = .init(frame: .zero, style: .plain)
         tableView.backgroundColor = .styleWhite
@@ -68,7 +75,7 @@ extension FavoritesViewController {
         }
         
         tableView.layout {
-            $0.top == pageHeader.bottomAnchor + Constants.tableViewTopInset
+            $0.top == pageHeader.bottomAnchor
             $0.leading == view.leadingAnchor
             $0.trailing == view.trailingAnchor
             $0.bottom == view.bottomAnchor

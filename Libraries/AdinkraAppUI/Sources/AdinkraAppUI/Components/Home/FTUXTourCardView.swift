@@ -88,7 +88,7 @@ extension FTUXTourCardView {
         
         pageCountLabel = .init(
             with: .bodyMainRegular,
-            textColor: .systemGray,
+            textColor: .styleGray,
             textAlignment: .left
         )
         

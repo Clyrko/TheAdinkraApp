@@ -38,11 +38,11 @@ extension SignInViewController {
         )
         
         emailTextField.placeholder = "Email"
-        emailTextField.textColor = .systemGray
+        emailTextField.textColor = .styleGray
         emailTextField.dropCorner(Constants.cornerRadius)
         
         passwordTextField.placeholder = "Password"
-        passwordTextField.textColor = .systemGray
+        passwordTextField.textColor = .styleGray
         passwordTextField.dropCorner(Constants.cornerRadius)
         
         logInButton = .init(with: .primaryDefault, title: "Login")

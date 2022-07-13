@@ -40,15 +40,15 @@ extension SignUpViewController {
         )
         
         firstNameTextField.placeholder = "First Name"
-        firstNameTextField.textColor = .systemGray
+        firstNameTextField.textColor = .styleGray
         firstNameTextField.dropCorner(Constants.cornerRadius)
         
         lastNameTextField.placeholder = "Last Name"
-        lastNameTextField.textColor = .systemGray
+        lastNameTextField.textColor = .styleGray
         lastNameTextField.dropCorner(Constants.cornerRadius)
         
         emailAddressTextField.placeholder = "Email"
-        emailAddressTextField.textColor = .systemGray
+        emailAddressTextField.textColor = .styleGray
         emailAddressTextField.dropCorner(Constants.cornerRadius)
         
         signUpButton = .init(with: .primaryDefault, title: "Sign Up")

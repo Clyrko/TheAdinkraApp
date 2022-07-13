@@ -66,13 +66,13 @@ class StyleButton: UIControl {
     private func updateForEnabled() {
         switch style {
         case .primaryDefault, .primaryIconLeft, .primaryIconRight:
-            backgroundColor = isEnabled ? .mainOrange : .systemGray
-            titleLabel.textColor = isEnabled ? .styleWhite : .systemGray
+            backgroundColor = isEnabled ? .mainOrange : .styleGray
+            titleLabel.textColor = isEnabled ? .styleWhite : .styleGray
         case .secondaryDefault, .secondaryIconRight, .secondaryIconLeft:
-            backgroundColor = isEnabled ? .systemGray  : .styleWhite
+            backgroundColor = isEnabled ? .styleGray  : .styleWhite
         case .indicator:
-            backgroundColor = isEnabled ? .mainOrange : .systemGray
-            iconImageView.setImageMaskColor(isEnabled ?.styleWhite : .systemGray)
+            backgroundColor = isEnabled ? .mainOrange : .styleGray
+            iconImageView.setImageMaskColor(isEnabled ?.styleWhite : .styleGray)
         }
     }
 

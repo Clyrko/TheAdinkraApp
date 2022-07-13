@@ -162,9 +162,9 @@ extension StyleTextField {
         backgroundColor = .clear
         clipsToBounds = false
 
-        container.backgroundColor = .systemGray
+        container.backgroundColor = .styleWhite
         container.layer.borderWidth = Constants.borderWidth
-        container.layer.borderColor = UIColor.clear.cgColor
+        container.layer.borderColor = UIColor.styleGray.cgColor
         container.dropCorner(Constants.cornerRadius)
         
         textField = UITextField(frame: .zero)
@@ -180,7 +180,7 @@ extension StyleTextField {
         
         placeholderLabel = .init(
             with: .bodyBalsamiqBold,
-            textColor: .systemGray,
+            textColor: .styleGray,
             numberOfLines: Constants.numberOfLines
         )
         

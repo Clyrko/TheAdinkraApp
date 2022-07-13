@@ -40,7 +40,7 @@ extension PasswordResetViewController {
         )
         
         emailTextField.placeholder = "Email"
-        emailTextField.textColor = .systemGray
+        emailTextField.textColor = .styleGray
         emailTextField.dropCorner(Constants.cornerRadius)
         
         sendButton = .init(with: .primaryDefault, title: "Send")

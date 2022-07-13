@@ -40,7 +40,7 @@ extension ProfileCell {
             textAlignment: .left
         )
         
-        textField.textColor = .systemGray
+        textField.textColor = .styleGray
         textField.dropCorner(Constants.cornerRadius)
         textField.iconImage = .named("icon-18-edit")
         
