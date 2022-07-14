@@ -28,7 +28,7 @@ extension ProfileFooter {
     private func initializeViews() {
         saveButton = .init(with: .primaryDefault, title: "Save Changes")
         saveButton.dropCorner(Constants.cornerRadius)
-        saveButton.backgroundColor = .systemTeal
+        saveButton.backgroundColor = .mainOrange
         saveButton.titleColor = .styleWhite
         saveButton.onTapAction = { [weak self] in
             self?.onSavePressed?()

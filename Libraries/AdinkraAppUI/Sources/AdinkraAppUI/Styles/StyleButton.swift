@@ -59,7 +59,7 @@ class StyleButton: UIControl {
         case .primaryDefault, .primaryIconLeft, .primaryIconRight, .indicator:
             backgroundColor = isHighlighted ? .systemOrange : .mainOrange
         case .secondaryDefault, .secondaryIconRight, .secondaryIconLeft:
-            backgroundColor = isHighlighted ? .systemGray  : .styleWhite
+            backgroundColor = isHighlighted ? .styleGray  : .styleWhite
         }
     }
 

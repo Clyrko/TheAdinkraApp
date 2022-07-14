@@ -107,4 +107,12 @@ class ViewControllerFactory {
     func makeProfileViewController() -> ProfileViewController {
         .init()
     }
+    
+    func makeStoreItemViewController() -> StoreItemViewController {
+        .init()
+    }
+    
+    func makeAddToCartViewController() -> AddToCartViewController {
+        .init()
+    }
 }

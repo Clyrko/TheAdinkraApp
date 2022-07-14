@@ -3,6 +3,7 @@ import UIKit
 
 private enum Constants {
     static let itemSize = CGSize(width: (UIScreen.width - 60) / 2, height: 250)
+    static let cartButtonSize = CGSize(width: 65, height: 65)
     static let horizontalInset: CGFloat = 28
     static let cornerRadius: CGFloat = 8
     static let fontSize: CGFloat = 16
@@ -13,6 +14,7 @@ class StoreViewController: BaseViewController {
     private var searchBar = StyleSearchBar()
     private var segmentedControl: UISegmentedControl!
     private var collectionView: UICollectionView!
+    private var cartButton: StyleButton!
     
     private var shirts: [StoreCell.UIModel] = [
         .init(item: .named("symbol-akoben"), title: "Nice Shirt", price: "GHc45"),
@@ -89,6 +91,11 @@ extension StoreViewController: UICollectionViewDataSource,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return Constants.itemSize
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = applicationDIProvider.makeStoreItemViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: - LAYOUT
@@ -110,9 +117,14 @@ extension StoreViewController {
             .foregroundColor : UIColor.styleWhite,
             .font : UIFont.montserrat(weight: .bold, size: Constants.fontSize)
         ], for: .selected)
-        segmentedControl.selectedSegmentTintColor = .systemTeal
+        segmentedControl.selectedSegmentTintColor = .mainOrange
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(segmentedControlPressed(_:)), for: .valueChanged)
+        
+        cartButton = .init(with: .indicator, title: nil)
+        cartButton.iconImageView.image = .named("icon-30-cart")
+        cartButton.backgroundColor = .mainOrange
+        cartButton.dropCorner(Constants.cartButtonSize.height.halved)
         
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .vertical
@@ -130,6 +142,7 @@ extension StoreViewController {
         view.addSubview(searchBar)
         view.addSubview(segmentedControl)
         view.addSubview(collectionView)
+        view.addSubview(cartButton)
     }
     
     private func layoutConstraint() {
@@ -157,6 +170,13 @@ extension StoreViewController {
             $0.leading == view.leadingAnchor + Constants.horizontalInset.halved
             $0.trailing == view.trailingAnchor - Constants.horizontalInset.halved
             $0.bottom == view.bottomAnchor
+        }
+        
+        cartButton.layout {
+            $0.trailing == view.trailingAnchor - 30
+            $0.bottom == view.bottomAnchor - 60
+            $0.height |=| Constants.cartButtonSize.height
+            $0.width |=| Constants.cartButtonSize.width
         }
     }
 }

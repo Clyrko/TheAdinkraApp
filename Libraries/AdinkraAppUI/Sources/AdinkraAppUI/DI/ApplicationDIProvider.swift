@@ -67,6 +67,14 @@ extension ApplicationDIProvider {
         viewControllerFactory.makeProfileViewController()
     }
     
+    public func makeStoreItemViewController() -> UIViewController {
+        viewControllerFactory.makeStoreItemViewController()
+    }
+    
+    public func makeAddToCartViewController() -> UIViewController {
+        viewControllerFactory.makeAddToCartViewController()
+    }
+    
     public func setBase(
         viewController: UIViewController,
         window: UIWindow? = nil,
