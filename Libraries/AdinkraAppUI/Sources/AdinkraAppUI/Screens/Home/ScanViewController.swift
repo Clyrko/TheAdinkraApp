@@ -9,6 +9,7 @@ private enum Constants {
 }
 
 class ScanViewController: BaseViewController {
+    private let navBar = PopOverNavigationBar()
     private var imagePicker = UIImagePickerController()
     private var imageView = UIImageView()
     private var selectPhotoButton: StyleButton!
@@ -44,7 +45,7 @@ class ScanViewController: BaseViewController {
     
     private func showPicker() {
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
     }
@@ -89,7 +90,7 @@ class ScanViewController: BaseViewController {
         for detection in detections {
             let preditiion = detection.labels.map({"\($0.identifier)"}).first
             symbolNameLabel?.text = preditiion
-//            print(detection.labels.map({"\($0.identifier)"}).first)
+            print(detection.labels.map({"\($0.identifier)"}).first)
             
             let boundingBox = detection.boundingBox
             let rectangle = CGRect(x: boundingBox.minX*image.size.width, y: (1-boundingBox.minY-boundingBox.height)*image.size.height, width: boundingBox.width*image.size.width, height: boundingBox.height*image.size.height)
@@ -102,12 +103,22 @@ class ScanViewController: BaseViewController {
         self.imageView.image = newImage
     }
     
-    
+    private func showProfileScreen() {
+        let controller = applicationDIProvider.makeProfileViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: - LAYOUT
 extension ScanViewController {
     private func initializeView() {
+        navBar.onBackAction = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        navBar.onProfileAction = { [weak self] in
+            self?.showProfileScreen()
+        }
+        navBar.title = "Scan"
         
         selectPhotoButton = .init(with: .primaryDefault, title: "Select Photo")
         selectPhotoButton.dropCorner(Constants.cornerRadius)
@@ -117,26 +128,36 @@ extension ScanViewController {
             self?.showPicker()
         }
         
+        imageView.image = .init(systemName: "camera.shutter.button")
+        imageView.tintColor = .styleGray
         imageView.contentMode = .scaleAspectFit
+        imageView.dropCorner(8)
         
         symbolNameLabel = .init(
-            with: .header2,
-            textColor: .mainOrange,
+            with: .bodyMainRegular,
+            textColor: .styleBlack,
             textAlignment: .center,
-            text: "Hello"
+            text: "Place take a picture or select an image from your Photo Library to begin identification"
         )
         
+        view.addSubview(navBar)
         view.addSubview(imageView)
         view.addSubview(symbolNameLabel)
         view.addSubview(selectPhotoButton)
     }
     
     private func layoutConstraint() {
+        navBar.layout {
+            $0.top == view.topAnchor
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+        }
+        
         imageView.layout {
-            $0.top == view.topAnchor + 40
+            $0.top == navBar.bottomAnchor + 20
             $0.leading == view.leadingAnchor + 20
             $0.trailing == view.trailingAnchor - 20
-            $0.height |=| 400
+            $0.height |=| 300
         }
         
         symbolNameLabel.layout {
