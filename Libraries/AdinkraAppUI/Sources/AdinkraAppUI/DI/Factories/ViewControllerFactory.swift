@@ -1,5 +1,7 @@
 import UIKit
 import AdinkraAppPresentation
+import CoreML
+import Vision
 
 class ViewControllerFactory {
     
@@ -72,8 +74,8 @@ class ViewControllerFactory {
 //        return navigationController
 //    }
     
-    func makeScanViewController() -> ScanViewController {
-        .init()
+    func makeScanViewController(model: VNCoreMLModel) -> ScanViewController {
+        .init(with: model)
     }
     
     func makeSymbolDetailsViewController() -> SymbolDetailsViewController {

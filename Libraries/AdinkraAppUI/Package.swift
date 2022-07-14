@@ -31,7 +31,6 @@ let package = Package(
                 )
             ],
             resources: [
-                .process("AdinkraAppObjectDetectionOne.mlmodel"),
                 .process("Resources")
             ]
         ),

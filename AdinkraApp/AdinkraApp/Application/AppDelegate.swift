@@ -1,5 +1,7 @@
 import AdinkraAppUI
 import UIKit
+import CoreML
+import Vision
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -8,9 +10,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UIFont.register()
+        setupAdinkraModel()
 //        applicationDIProvider.initialize()
-        setupWindow()
+        setupWindow()        
         return true
+    }
+    
+    private func setupAdinkraModel() {
+        do {
+            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
+            applicationDIProvider.adinkraModel = model
+        } catch {
+            print("ERROR OCCURED INITIAZING \(error.localizedDescription)")
+        }
     }
     
     private func setupWindow() {

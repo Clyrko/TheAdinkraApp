@@ -14,6 +14,8 @@
 		691F7FF22856922800901A63 /* AdinkraAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FF12856922800901A63 /* AdinkraAppUITests.swift */; };
 		691F7FF42856922800901A63 /* AdinkraAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F7FF32856922800901A63 /* AdinkraAppUITestsLaunchTests.swift */; };
 		691F80062856932800901A63 /* AdinkraAppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 691F80052856932800901A63 /* AdinkraAppUI */; };
+		69351CF5288059F1002BB231 /* AdinkraAppObjectDetectionOne.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 69351CF4288051BE002BB231 /* AdinkraAppObjectDetectionOne.mlmodel */; settings = {ATTRIBUTES = (project_codegen, ); }; };
+		69351CF728805AD4002BB231 /* VNCoreMLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69351CF628805AD4002BB231 /* VNCoreMLRequestFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		691F8001285692D700901A63 /* AdinkraAppDomainData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AdinkraAppDomainData; sourceTree = "<group>"; };
 		691F8002285692D700901A63 /* AdinkraAppPresentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AdinkraAppPresentation; sourceTree = "<group>"; };
 		691F8003285692D700901A63 /* AdinkraAppUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AdinkraAppUI; sourceTree = "<group>"; };
+		69351CF4288051BE002BB231 /* AdinkraAppObjectDetectionOne.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AdinkraAppObjectDetectionOne.mlmodel; sourceTree = "<group>"; };
+		69351CF628805AD4002BB231 /* VNCoreMLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VNCoreMLRequestFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 		691F7FCF2856922600901A63 /* AdinkraApp */ = {
 			isa = PBXGroup;
 			children = (
+				69351CF3288051B6002BB231 /* Model */,
 				691F8007285697BB00901A63 /* Application */,
 				691F8008285697C700901A63 /* Storyboard */,
 				691F7FDE2856922700901A63 /* Info.plist */,
@@ -147,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				691F7FD02856922600901A63 /* AppDelegate.swift */,
+				69351CF628805AD4002BB231 /* VNCoreMLRequestFactory.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -165,6 +171,14 @@
 				691F7FD92856922700901A63 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		69351CF3288051B6002BB231 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69351CF4288051BE002BB231 /* AdinkraAppObjectDetectionOne.mlmodel */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +315,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				691F7FD12856922600901A63 /* AppDelegate.swift in Sources */,
+				69351CF728805AD4002BB231 /* VNCoreMLRequestFactory.swift in Sources */,
+				69351CF5288059F1002BB231 /* AdinkraAppObjectDetectionOne.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,14 @@
 import UIKit
 import AdinkraAppPresentation
+import CoreML
+import Vision
 
 public let applicationDIProvider = ApplicationDIProvider()
 
 public class ApplicationDIProvider {
     private let transitionDuration: CGFloat = 0.35
     private let viewControllerFactory: ViewControllerFactory
+    public var adinkraModel: VNCoreMLModel?
     //    private let viewModelFactory: ViewModelFactoryProtocol
     
     init() {
@@ -32,7 +35,10 @@ extension ApplicationDIProvider {
     //    }
     
     public func makeScanViewController() -> UIViewController {
-        viewControllerFactory.makeScanViewController()
+        guard let model = adinkraModel else {
+            fatalError()
+        }
+        return viewControllerFactory.makeScanViewController(model: model)
     }
     
     public func makeSymbolDetailsController() -> UIViewController {
