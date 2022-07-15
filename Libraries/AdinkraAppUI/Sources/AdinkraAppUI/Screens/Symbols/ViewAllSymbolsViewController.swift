@@ -75,8 +75,10 @@ class ViewAllSymbolsViewController: BaseViewController {
         .init(id: 59, symbol: .named("symbol-wawa-aba"), title: "Wawa Aba", meaning: "Wawa Aba means “seed of the wawa (tree).” It is a symbol of hardiness, toughness, and perseverance.", description: "Wawa Aba literally means “seed of the wawa,” that is, seed of the wawa plant (Triplochiton scleroxylon). This seed is reputed for its hardness. Thus, Wawa Aba is a symbol of hardness, strength, toughness, endurance, durability, and so on. The wood of the wawa plant is popular in the region for its use in building and carpentry.", pronunciation: "wawa-aba", categories: ["Nature"], isFavorite: false),
         .init(id: 60, symbol: .named("symbol-woforo-dua-pa-a"), title: "Woforo Dua Pa A", meaning: "Woforo Dua Pa A means “when you climb a good tree.” It is from the Akan proverb “Woforo dua pa a na yepia wo,” meaning “It is when you climb a good tree that we give you a push.” It is a symbol of support for good causes.", description: "More metaphorically, it means that when you work for a good cause, you will get support. ", pronunciation: "woforo-dua-pa-a", categories: ["Nature"], isFavorite: false)
     ]
-
+    
     private var dataSource: [SymbolPresentationModel] = []
+    
+    private var sectionTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +105,7 @@ class ViewAllSymbolsViewController: BaseViewController {
 }
 
 //MARK: - COLLECTIONVIEW
-extension ViewAllSymbolsViewController: UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension ViewAllSymbolsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if dataSource.isEmpty {
             backgroundView.frame = collectionView.frame
@@ -129,15 +131,25 @@ extension ViewAllSymbolsViewController: UICollectionViewDataSource,UICollectionV
         controller.symbols = dataSource[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)
     }
-    
+//    
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        26
+//        print(sectionTitles.count)
+//        return sectionTitles.count
 //    }
-//
+//    
 //    func indexTitles(for collectionView: UICollectionView) -> [String]? {
+//        //        return sectionTitles
+//        print(Array(Set(symbols.map{ String($0.title.prefix(1)) })).sorted(by: { $0 < $1 }))
+//        return Array(Set(symbols.map{ String($0.title.prefix(1)) })).sorted(by: { $0 < $1 })
 //    }
-//
+//    
 //    func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
+//        //        symbols[IndexPath.init(row: symbols, section: symbols)]
+//        guard let index = symbols.firstIndex(where: { $0.title.prefix(1) == title }) else {
+//            return IndexPath(item: 0, section: 0)
+//        }
+////        print(index)
+//        return IndexPath(item: index, section: 0)
 //    }
 }
 
