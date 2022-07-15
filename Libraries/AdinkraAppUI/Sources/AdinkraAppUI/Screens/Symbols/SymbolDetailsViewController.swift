@@ -33,6 +33,11 @@ class SymbolDetailsViewController: BaseViewController {
         symbolView.title = symbols.title
         meaningDescriptionLabel.text = symbols.meaning
         detailsDescriptionLabel.text = symbols.description
+        if symbols.pronunciation == "" {
+            symbolPronunciationButton.iconImageView.image = .init(systemName: "speaker.slash")
+            symbolPronunciationButton.iconImageView.setImageMaskColor(.red)
+            symbolPronunciationButton.isUserInteractionEnabled = false
+        }
     }
     
     private func showProfileScreen() {
