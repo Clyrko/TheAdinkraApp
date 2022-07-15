@@ -7,18 +7,17 @@ import Vision
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UIFont.register()
         setupAdinkraModel()
-//        applicationDIProvider.initialize()
-        setupWindow()        
+        setupWindow()
         return true
     }
     
     private func setupAdinkraModel() {
         do {
-            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne().model)
+            let model = try VNCoreMLModel(for: AdinkraAppObjectDetectionOne(configuration: MLModelConfiguration()).model)
             applicationDIProvider.adinkraModel = model
         } catch {
             print("ERROR OCCURED INITIAZING \(error.localizedDescription)")
@@ -28,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupWindow() {
         window = UIWindow()
         let controller = applicationDIProvider.makeApplicationBaseViewController()
-//        let controller = applicationDIProvider.makeHomeViewController()
         applicationDIProvider.setBase(viewController: controller, window: window)
     }
 }

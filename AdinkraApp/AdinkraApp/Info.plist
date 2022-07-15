@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Test Library</string>
+	<string>Give permission to access your Photo Library</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Testing Camera</string>
+	<string>Give permission to access your camera</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIApplicationSceneManifest</key>

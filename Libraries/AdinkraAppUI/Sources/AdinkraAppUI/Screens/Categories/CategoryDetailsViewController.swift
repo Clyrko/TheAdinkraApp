@@ -8,7 +8,6 @@ private enum Constants {
 
 class CategoryDetailsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
-    private var searchBar = StyleSearchBar()
     private var categoriesTitleLabel: StyleLabel!
     private var categoryLabel: StyleLabel!
     private var scanButton: StyleButton!
@@ -322,7 +321,6 @@ extension CategoryDetailsViewController {
         tableView.register(CategorySymbolCell.self, forCellReuseIdentifier: CategorySymbolCell.Identifier)
         
         view.addSubview(navBar)
-        view.addSubview(searchBar)
         view.addSubview(categoriesTitleLabel)
         view.addSubview(categoryLabel)
         view.addSubview(scanButton)
@@ -338,14 +336,8 @@ extension CategoryDetailsViewController {
             $0.trailing == view.trailingAnchor
         }
         
-        searchBar.layout {
-            $0.top == navBar.bottomAnchor + 36
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
-        }
-        
         categoriesTitleLabel.layout {
-            $0.top == searchBar.bottomAnchor + 20
+            $0.top == navBar.bottomAnchor + 36
             $0.leading == view.leadingAnchor + Constants.horizontalInset
         }
         

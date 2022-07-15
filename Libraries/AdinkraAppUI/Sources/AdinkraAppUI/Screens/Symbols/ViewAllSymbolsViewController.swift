@@ -9,6 +9,7 @@ private enum Constants {
 class ViewAllSymbolsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
     private var searchBar = StyleSearchBar()
+    private var backgroundView = SearchNotFoundView()
     private var titleLabel: StyleLabel!
     private var collectionView: UICollectionView!
     
@@ -74,12 +75,25 @@ class ViewAllSymbolsViewController: BaseViewController {
         .init(id: 59, symbol: .named("symbol-wawa-aba"), title: "Wawa Aba", meaning: "Wawa Aba means “seed of the wawa (tree).” It is a symbol of hardiness, toughness, and perseverance.", description: "Wawa Aba literally means “seed of the wawa,” that is, seed of the wawa plant (Triplochiton scleroxylon). This seed is reputed for its hardness. Thus, Wawa Aba is a symbol of hardness, strength, toughness, endurance, durability, and so on. The wood of the wawa plant is popular in the region for its use in building and carpentry.", pronunciation: "LOL", categories: ["Nature"], isFavorite: false),
         .init(id: 60, symbol: .named("symbol-woforo-dua-pa-a"), title: "Woforo Dua Pa A", meaning: "Woforo Dua Pa A means “when you climb a good tree.” It is from the Akan proverb “Woforo dua pa a na yepia wo,” meaning “It is when you climb a good tree that we give you a push.” It is a symbol of support for good causes.", description: "More metaphorically, it means that when you work for a good cause, you will get support. ", pronunciation: "LOL", categories: ["Nature"], isFavorite: false)
     ]
+
+    private var dataSource: [SymbolPresentationModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .styleWhite
+        dataSource = symbols
         initializeView()
         layoutConstraint()
+    }
+    
+    private func filterSymbols(text: String){
+        defer { collectionView.reloadData() }
+        guard text.isNotEmpty else {
+            dataSource = symbols
+            return
+        }
+        dataSource = symbols.filter{ $0.title.localizedCaseInsensitiveContains(text)
+        }
     }
     
     private func showProfileScreen() {
@@ -90,14 +104,19 @@ class ViewAllSymbolsViewController: BaseViewController {
 
 //MARK: - COLLECTIONVIEW
 extension ViewAllSymbolsViewController: UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        symbols.count
+        if dataSource.isEmpty {
+            backgroundView.frame = collectionView.frame
+            collectionView.backgroundView = backgroundView
+        }else{
+            collectionView.backgroundView = nil
+        }
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SymbolCell.Identifier, for: indexPath) as? SymbolCell else { fatalError() }
-        cell.setup(with: symbols[indexPath.row])
+        cell.setup(with: dataSource[indexPath.row])
         return cell
     }
     
@@ -107,7 +126,7 @@ extension ViewAllSymbolsViewController: UICollectionViewDataSource,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = SymbolDetailsViewController()
-        controller.symbols = symbols[indexPath.row]
+        controller.symbols = dataSource[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -141,6 +160,10 @@ extension ViewAllSymbolsViewController {
             text: "All Symbols"
         )
         
+        searchBar.onTextChanged = { [weak self] text in
+            self?.filterSymbols(text: text)
+        }
+        
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .vertical
         collectionViewFlowLayout.minimumLineSpacing = 30
@@ -149,6 +172,7 @@ extension ViewAllSymbolsViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.backgroundView = SearchNotFoundView()
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(SymbolCell.self, forCellWithReuseIdentifier: SymbolCell.Identifier)
@@ -181,7 +205,7 @@ extension ViewAllSymbolsViewController {
         collectionView.layout {
             $0.top == titleLabel.bottomAnchor + 24
             $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - 62
+            $0.trailing == view.trailingAnchor - Constants.horizontalInset
             $0.bottom == view.bottomAnchor
         }
     }
