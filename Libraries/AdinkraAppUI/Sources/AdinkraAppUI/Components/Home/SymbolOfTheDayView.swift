@@ -19,14 +19,14 @@ class SymbolOfTheDayView: UIView {
     private var titleLabel: StyleLabel!
     private var symbolOfTheDayContainer = UIView()
     private var containerBackgroundImageView: UIImageView!
-    private var symbolOfTheDayImageView: UIImageView!
+    var symbolOfTheDayImageView: UIImageView!
     private var favoriteIconImageView: UIImageView!
-    private var symbolNameLabel: StyleLabel!
-    private var soundButton: StyleButton!
+    var symbolNameLabel: StyleLabel!
+    var soundButton: StyleButton!
     private var meaningLabel: StyleLabel!
-    private var meaningDescriptionLabel: StyleLabel!
+    var meaningDescriptionLabel: StyleLabel!
     private var detailsLabel: StyleLabel!
-    private var detailsDescriptionLabel: StyleLabel!
+    var detailsDescriptionLabel: StyleLabel!
     
     var onPlaySoundAction: Closure.Block?
     
@@ -39,15 +39,6 @@ class SymbolOfTheDayView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    func setup(with model: UiModel) {
-//        descriptionLabel.font = StyleLabel.Style.captionBoldLarge.font
-//        descriptionLabel.textColor = .styleBlack
-//        descriptionLabel.text = model.description
-//        iconImageView.alpha = .zero
-//        progressView.isHidden = false
-//        progressView.setup(with: model.completedCount, totalCount: model.totalCount)
-//    }
 }
 
 //MARK: - LAYOUT
