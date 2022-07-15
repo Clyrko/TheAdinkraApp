@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import AVFoundation
 
 private enum Constants {
     static let pronunciationIconImageViewSize = CGSize(width: 28, height: 28)
@@ -15,6 +16,7 @@ class SymbolDetailsViewController: BaseViewController {
     private var meaningDescriptionLabel: StyleLabel!
     private var detailsLabel: StyleLabel!
     private var detailsDescriptionLabel: StyleLabel!
+    private var player: AVAudioPlayer!
     
     var symbols: SymbolPresentationModel!
     
@@ -37,6 +39,19 @@ class SymbolDetailsViewController: BaseViewController {
         let controller = applicationDIProvider.makeProfileViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    private func playSound() {
+        guard let url = Bundle.module.url(forResource: symbols.pronunciation, withExtension: "mp3") else {
+            print("File not found")
+            return
+        }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.play()
+        } catch {
+            print(error)
+        }
+    }
 }
 
 //MARK: - LAYOUT
@@ -58,9 +73,11 @@ extension SymbolDetailsViewController {
         
         symbolPronunciationButton = .init(with: .indicator, title: nil)
         symbolPronunciationButton.iconImageView.image = .named("icon-28-sound")
+        symbolPronunciationButton.canHighlight = false
         symbolPronunciationButton.backgroundColor = .clear
-//        symbolPronunciationButton.onTapAction = { [weak self] in
-//        }
+        symbolPronunciationButton.onTapAction = { [weak self] in
+            self?.playSound()
+        }
         
         meaningLabel = .init(
             with: .header2,
