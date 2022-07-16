@@ -14,7 +14,7 @@ class SymbolDetailsViewController: BaseViewController {
     private var scrollView: UIScrollView!
     private var container = UIView()
     private var symbolView = SymbolView()
-    private var symbolNameLabel: StyleLabel!
+    private var symbolPhoneticLabel: StyleLabel!
     private var symbolPronunciationButton: StyleButton!
     private var meaningLabel: StyleLabel!
     private var meaningDescriptionLabel: StyleLabel!
@@ -41,6 +41,7 @@ class SymbolDetailsViewController: BaseViewController {
         symbolView.isFavorite = symbols.isFavorite
         meaningDescriptionLabel.text = symbols.meaning
         detailsDescriptionLabel.text = symbols.description
+        symbolPhoneticLabel.text = symbols.phonetic
         if symbols.pronunciation == "" {
             symbolPronunciationButton.iconImageView.image = .init(systemName: "speaker.slash")
             symbolPronunciationButton.iconImageView.setImageMaskColor(.red)
@@ -85,8 +86,8 @@ extension SymbolDetailsViewController {
         scrollView.backgroundColor = .clear
         container.backgroundColor = .styleWhite
         
-        symbolNameLabel = .init(
-            with: .bodyBalsamiqBold,
+        symbolPhoneticLabel = .init(
+            with: .bodyMainRegular,
             textColor: .mainOrange,
             textAlignment: .left
         )
@@ -130,7 +131,7 @@ extension SymbolDetailsViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(container)
         container.addSubview(symbolView)
-        container.addSubview(symbolNameLabel)
+        container.addSubview(symbolPhoneticLabel)
         container.addSubview(symbolPronunciationButton)
         container.addSubview(meaningLabel)
         container.addSubview(meaningDescriptionLabel)
@@ -171,20 +172,20 @@ extension SymbolDetailsViewController {
             $0.trailing == container.trailingAnchor - 28
         }
         
-        symbolNameLabel.layout {
+        symbolPhoneticLabel.layout {
             $0.top == symbolView.bottomAnchor + 30
             $0.leading == container.leadingAnchor + 28
         }
         
         symbolPronunciationButton.layout {
-            $0.centerY == symbolNameLabel.centerYAnchor
+            $0.centerY == symbolPhoneticLabel.centerYAnchor
             $0.trailing == container.trailingAnchor - 28
             $0.height |=| Constants.pronunciationIconImageViewSize.height
             $0.width |=| Constants.pronunciationIconImageViewSize.width
         }
         
         meaningLabel.layout {
-            $0.top == symbolNameLabel.bottomAnchor + 54
+            $0.top == symbolPhoneticLabel.bottomAnchor + 54
             $0.leading == container.leadingAnchor + Constants.horizontalInset
             $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
