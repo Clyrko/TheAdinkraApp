@@ -213,11 +213,14 @@ class ScanViewController: BaseViewController {
             let prediction = detection.labels.map({"\($0.identifier)"}).first
             symbolNameLabel?.text = prediction
             goToDetailsButton.isHidden = false
-            let scannedSymbol = symbols.first(where: {$0.title == prediction})
-            position = scannedSymbol?.id
+            guard let scannedSymbol = symbols.first(where: {$0.title == prediction}) else {
+                return
+            }
+            
+            position = scannedSymbol.id
             func showDetails() {
                 let controller = SymbolDetailsViewController()
-                controller.symbols = symbols[position! - 1]
+                controller.symbols = symbols[position - 1]
                 navigationController?.pushViewController(controller, animated: true)
             }
             goToDetailsButton.onTapAction = {
