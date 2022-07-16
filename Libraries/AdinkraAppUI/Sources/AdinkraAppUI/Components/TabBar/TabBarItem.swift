@@ -13,6 +13,10 @@ private enum Constants {
 class TabBarItem: UIControl {
     private var titleLabel: StyleLabel!
     private var imageView: UIImageView!
+    private var widthConstraint: NSLayoutConstraint?
+    private var heightConstraint: NSLayoutConstraint?
+    private var imageWidthConstraint: NSLayoutConstraint?
+    private var imageHeightConstraint: NSLayoutConstraint?
     
     var uiModel: UIModel
     var onSelected: Closure.SingleInput<Int>?
@@ -42,6 +46,20 @@ class TabBarItem: UIControl {
     
     @objc private func onTapAction(sender: UIControl){
         onSelected?(uiModel.index)
+    }
+    
+    func hide() {
+        widthConstraint?.constant = .zero
+        heightConstraint?.constant = .zero
+        imageHeightConstraint?.constant = .zero
+        imageWidthConstraint?.constant = .zero
+    }
+    
+    func show() {
+        widthConstraint?.constant = Constants.estimatedItemSize.width
+        heightConstraint?.constant = Constants.estimatedItemSize.height
+        imageHeightConstraint?.constant = Constants.imageSize.height
+        imageWidthConstraint?.constant = Constants.imageSize.width
     }
 }
 

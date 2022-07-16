@@ -119,6 +119,9 @@ extension ViewAllSymbolsViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SymbolCell.Identifier, for: indexPath) as? SymbolCell else { fatalError() }
         cell.setup(with: dataSource[indexPath.row])
+        cell.onFavoriteAction = { [weak self] in
+            self?.dataSource[indexPath.row].isFavorite = cell.isSelected
+        }
         return cell
     }
     

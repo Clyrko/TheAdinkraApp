@@ -14,7 +14,7 @@ class CategorySymbolCell: UITableViewCell {
     private var backgroundImageView: UIImageView!
     private var titleLabel: StyleLabel!
     private var symbolImageView = UIImageView()
-    private var favoriteButton: UIImageView!
+    private var favoriteButton = UIButton()
     private var nextButton: UIImageView!
     
     override init(style: UITableViewCell.CellStyle,
@@ -26,6 +26,10 @@ class CategorySymbolCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func onTap(){
+        self.favoriteButton.isSelected.toggle()
     }
     
     func setup(with category: SymbolPresentationModel) {
@@ -43,8 +47,11 @@ extension CategorySymbolCell {
         backgroundImageView = .init(image: .named("symbol-background"))
         backgroundImageView.contentMode = .scaleToFill
         
-        favoriteButton = .init(image: .named("icon-30-favorite"))
-        favoriteButton.contentMode = .scaleAspectFit
+        favoriteButton.setImage(.init(systemName: "suit.heart"), for: .normal)
+        favoriteButton.setImage(.init(systemName: "suit.heart.fill"), for: .selected)
+        favoriteButton.tintColor = .mainOrange
+        favoriteButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        favoriteButton.isHidden = true
         
         nextButton = .init(image: .named("icon-24-arrow-right"))
         nextButton.setImageMaskColor(.styleBlack)

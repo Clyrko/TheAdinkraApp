@@ -64,11 +64,18 @@ class TabBar: UIView {
         ) {
             self.layoutIfNeeded()
         }
-
     }
     
     func currentTab(at index: Int) -> UIView {
         tabs[index]
+    }
+    
+    func hide() {
+        tabs.forEach { $0.hide() }
+    }
+    
+    func show() {
+        tabs.forEach { $0.show() }
     }
 }
 

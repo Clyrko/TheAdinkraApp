@@ -1,6 +1,5 @@
 import UIKit
 
-
 private enum Constants {
     static let width: CGFloat = 102
     static let horizontalInset: CGFloat = 24
@@ -24,6 +23,7 @@ class BaseApplicationViewController: UIViewController {
     private var ftuxCardTip: UIImageView!
     private var ftuxCard: FTUXTourCardView!
     private var ftuxCardTipXConstraint: NSLayoutConstraint?
+    private var tabBarheightContraint: NSLayoutConstraint?
     private var selectecdTintColor: UIColor = .mainOrange
     private var defaultTintColor: UIColor = .systemGray
     private var container = UIView()
@@ -139,11 +139,28 @@ class BaseApplicationViewController: UIViewController {
         }
     }
     
-    func animateLayout() {
+    func hideTabBar() {
+        tabBarheightContraint?.constant = .zero
+        tabBar.hide()
+        animateLayout {
+            self.tabBar.alpha = .zero
+        }
+    }
+    
+    func showTabBar() {
+        tabBar.show()
+        tabBarheightContraint?.constant = Constants.tabHeight
+        animateLayout{
+            self.tabBar.alpha = 1
+        }
+    }
+    
+    func animateLayout(animation: Closure.Block? = nil) {
         UIView.animate(
             withDuration: Constants.animationDuration, delay: .zero,
             options: .transitionCrossDissolve
         ) {
+            animation?()
             self.view.layoutIfNeeded()
         }
     }

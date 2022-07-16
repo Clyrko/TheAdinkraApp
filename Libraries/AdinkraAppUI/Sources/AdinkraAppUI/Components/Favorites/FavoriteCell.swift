@@ -3,7 +3,7 @@ import UIKit
 
 private enum Constants {
     static let symbolImageViewSize = CGSize(width: 85, height: 85)
-    static let favoriteButtonSize = CGSize(width: 32, height: 32)
+    static let favoriteButtonSize = CGSize(width: 40, height: 40)
     static let insets = UIEdgeInsets(top: 12, left: 30, bottom: 12, right: 30)
     static let symbolInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     static let cornerRadius: CGFloat = 8
@@ -19,7 +19,7 @@ class FavoriteCell: UITableViewCell {
     private var titleLabel: StyleLabel!
     private var descriptionLabel: StyleLabel!
     private var viewDetailsButton: StyleButton!
-    private var favoriteButton: UIImageView!
+    private var favoriteButton = UIButton()
     
     override init(style: UITableViewCell.CellStyle,
                   reuseIdentifier: String?) {
@@ -32,10 +32,14 @@ class FavoriteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(with model: UIModel) {
-        symbolImageView.image = model.symbol
-        titleLabel.text = model.name
-        descriptionLabel.text = model.description
+    @objc private func onTap(){
+        self.favoriteButton.isSelected.toggle()
+    }
+    
+    func setup(with symbol: SymbolPresentationModel) {
+        symbolImageView.image = symbol.symbol
+        titleLabel.text = symbol.title
+        descriptionLabel.text = symbol.description
     }
 }
 
@@ -43,7 +47,6 @@ class FavoriteCell: UITableViewCell {
 extension FavoriteCell {
     private func initializeView() {
         selectionStyle = .none
-        container.isUserInteractionEnabled = false
         
         symbolContainer.dropCorner(Constants.cornerRadius)
         symbolContainer.isUserInteractionEnabled = false
@@ -53,8 +56,11 @@ extension FavoriteCell {
         
         symbolImageView.contentMode = .scaleAspectFit
         
-        favoriteButton = .init(image: .named("icon-32-favorite-filled"))
-        favoriteButton.contentMode = .scaleAspectFit
+        favoriteButton.setImage(.init(systemName: "suit.heart"), for: .normal)
+        favoriteButton.setImage(.init(systemName: "suit.heart.fill"), for: .selected)
+        favoriteButton.tintColor = .mainOrange
+        favoriteButton.isSelected = true
+        favoriteButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
         
         titleLabel = .init(
             with: .header1,
@@ -70,6 +76,7 @@ extension FavoriteCell {
         
         viewDetailsButton = .init(with: .primaryDefault, title: "view details")
         viewDetailsButton.backgroundColor = .clear
+        viewDetailsButton.canHighlight = false
         viewDetailsButton.titleColor = .mainOrange
         
         contentView.addSubview(container)
@@ -103,11 +110,13 @@ extension FavoriteCell {
         titleLabel.layout {
             $0.top == symbolContainer.topAnchor
             $0.leading == symbolContainer.trailingAnchor + Constants.horizontalInset
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
         
         descriptionLabel.layout {
             $0.top == titleLabel.bottomAnchor + Constants.verticalInset
             $0.leading == symbolContainer.trailingAnchor + Constants.horizontalInset
+            $0.trailing == favoriteButton.leadingAnchor - Constants.horizontalInset.halved
         }
         
         viewDetailsButton.layout {
@@ -125,11 +134,11 @@ extension FavoriteCell {
     }
 }
 
-//MARK: - Model
-extension FavoriteCell {
-    struct UIModel {
-        var symbol: UIImage
-        var name: String
-        var description: String
-    }
-}
+////MARK: - Model
+//extension FavoriteCell {
+//    struct UIModel {
+//        var symbol: UIImage
+//        var name: String
+//        var description: String
+//    }
+//}

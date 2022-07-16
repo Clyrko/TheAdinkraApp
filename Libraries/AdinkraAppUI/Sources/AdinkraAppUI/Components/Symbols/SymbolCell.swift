@@ -9,7 +9,9 @@ private enum Constants {
 class SymbolCell: UICollectionViewCell {
     private var backgroundImageView: UIImageView!
     private var symbolImageView = UIImageView()
-    private var favoriteButton: UIImageView!
+    private var favoriteButton = UIButton()
+    
+    var onFavoriteAction: Closure.Block?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,8 +23,14 @@ class SymbolCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func onTap(){
+        self.favoriteButton.isSelected.toggle()
+        onFavoriteAction?()
+    }
+    
     func setup(with symbol: SymbolPresentationModel) {
         symbolImageView.image = symbol.symbol
+        favoriteButton.isSelected = symbol.isFavorite
     }
 }
 
@@ -34,8 +42,11 @@ extension SymbolCell {
         backgroundImageView = .init(image: .named("symbol-background"))
         backgroundImageView.contentMode = .scaleToFill
         
-        favoriteButton = .init(image: .named("icon-30-favorite"))
-        favoriteButton.contentMode = .scaleAspectFit
+        favoriteButton.setImage(.init(systemName: "suit.heart"), for: .normal)
+        favoriteButton.setImage(.init(systemName: "suit.heart.fill"), for: .selected)
+        favoriteButton.tintColor = .mainOrange
+        favoriteButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        favoriteButton.isHidden = true
         
         symbolImageView.contentMode = .scaleAspectFit
         

@@ -14,7 +14,7 @@ class SymbolView: UIView {
     private var backgroundImageView: UIImageView!
     private var symbolImageView = UIImageView()
     private var symbolNameLabel: StyleLabel!
-    private var favoriteIconImageView: UIImageView!
+    private var favoriteButton = UIButton()
     
     var title: String? {
         didSet { symbolNameLabel.text = title }
@@ -24,12 +24,18 @@ class SymbolView: UIView {
         didSet { symbolImageView.image = symbol }
     }
     
+    var isFavorite: Bool {
+        didSet { favoriteButton.isSelected = isFavorite }
+    }
+    
     init(
         symbol: UIImage? = nil,
-        title: String? = nil
+        title: String? = nil,
+        isFavorite: Bool = false
     ) {
         self.symbol = symbol
         self.title = title
+        self.isFavorite = isFavorite
         super.init(frame: .zero)
         initializeView()
         layoutConstraint()
@@ -37,6 +43,10 @@ class SymbolView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func onTap(){
+        self.favoriteButton.isSelected.toggle()
     }
 }
 
@@ -52,8 +62,10 @@ extension SymbolView {
         backgroundImageView = .init(image: .named("symbol-background"))
         backgroundImageView.contentMode = .scaleToFill
         
-        favoriteIconImageView = .init(image: .named("icon-30-favorite"))
-        favoriteIconImageView.contentMode = .scaleAspectFit
+        favoriteButton.setImage(.init(systemName: "suit.heart"), for: .normal)
+        favoriteButton.setImage(.init(systemName: "suit.heart.fill"), for: .selected)
+        favoriteButton.tintColor = .mainOrange
+        favoriteButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
         
         symbolNameLabel = .init(
            with: .header1,
@@ -66,7 +78,7 @@ extension SymbolView {
         addSubview(backgroundImageView)
         addSubview(symbolImageView)
         addSubview(symbolNameLabel)
-        addSubview(favoriteIconImageView)
+        addSubview(favoriteButton)
     }
     
     private func layoutConstraint() {
@@ -87,7 +99,7 @@ extension SymbolView {
             $0.bottom == bottomAnchor - Constants.verticalInset
         }
         
-        favoriteIconImageView.layout {
+        favoriteButton.layout {
             $0.top == topAnchor + Constants.verticalInset.halved
             $0.trailing == trailingAnchor - Constants.horizontalInset
             $0.height |=| Constants.favoriteIconImageViewSize.height

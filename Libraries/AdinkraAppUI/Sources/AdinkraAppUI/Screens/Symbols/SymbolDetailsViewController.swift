@@ -31,6 +31,7 @@ class SymbolDetailsViewController: BaseViewController {
     private func populateSymbolDetails() {
         symbolView.symbol = symbols.symbol
         symbolView.title = symbols.title
+        symbolView.isFavorite = symbols.isFavorite
         meaningDescriptionLabel.text = symbols.meaning
         detailsDescriptionLabel.text = symbols.description
         if symbols.pronunciation == "" {

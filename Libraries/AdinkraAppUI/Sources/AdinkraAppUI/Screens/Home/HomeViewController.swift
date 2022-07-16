@@ -21,7 +21,6 @@ class HomeViewController: BaseViewController {
     private var scanButton: StyleButton!
     private var scrollView: UIScrollView!
     private var container = UIView()
-    private var searchBar = StyleSearchBar()
     private var viewAllSymbolsView = ViewAllHeaderView()
     private var viewAllCategoriesView = ViewAllHeaderView()
     private var collectionView: UICollectionView!
@@ -250,7 +249,6 @@ extension HomeViewController {
         view.addSubview(scanButton)
         view.addSubview(scrollView)
         scrollView.addSubview(container)
-        container.addSubview(searchBar)
         container.addSubview(viewAllSymbolsView)
         container.addSubview(viewAllCategoriesView)
         container.addSubview(collectionView)
@@ -297,14 +295,8 @@ extension HomeViewController {
         containerViewHeightConstraint = container.heightAnchor.constraint(equalToConstant: Constants.scrollViewHeight)
         containerViewHeightConstraint.isActive = true
         
-        searchBar.layout {
-            $0.top == container.topAnchor
-            $0.leading == container.leadingAnchor + Constants.horizontalInset
-            $0.trailing == container.trailingAnchor - Constants.horizontalInset
-        }
-        
         viewAllSymbolsView.layout {
-            $0.top == searchBar.bottomAnchor + Constants.verticalInset
+            $0.top == container.topAnchor
             $0.leading == container.leadingAnchor
             $0.trailing == container.trailingAnchor
         }

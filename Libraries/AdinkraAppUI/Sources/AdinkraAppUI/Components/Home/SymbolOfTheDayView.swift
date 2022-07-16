@@ -3,7 +3,7 @@ import UIKit
 
 private enum Constants {
     static let symbolIconImageViewSize = CGSize(width: 100, height: 100)
-    static let favoriteIconImageViewSize = CGSize(width: 30, height: 30)
+    static let favoriteButtonSize = CGSize(width: 30, height: 30)
     static let soundIconImageViewSize = CGSize(width: 28, height: 28)
     static let horizontalInset: CGFloat = 25
     static let verticalInset: CGFloat = 20
@@ -20,7 +20,7 @@ class SymbolOfTheDayView: UIView {
     private var symbolOfTheDayContainer = UIView()
     private var containerBackgroundImageView: UIImageView!
     var symbolOfTheDayImageView: UIImageView!
-    private var favoriteIconImageView: UIImageView!
+    private var favoriteButton = UIButton()
     var symbolNameLabel: StyleLabel!
     var soundButton: StyleButton!
     private var meaningLabel: StyleLabel!
@@ -39,6 +39,10 @@ class SymbolOfTheDayView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc private func onTap(){
+        self.favoriteButton.isSelected.toggle()
+    }
 }
 
 //MARK: - LAYOUT
@@ -53,10 +57,7 @@ extension SymbolOfTheDayView {
         
         symbolOfTheDayImageView = .init(image: .named("symbol-sankofa"))
         symbolOfTheDayImageView.contentMode = .scaleAspectFit
-        
-        favoriteIconImageView = .init(image: .named("icon-30-favorite"))
-        favoriteIconImageView.contentMode = .scaleAspectFit
-        
+
         titleLabel = .init(
             with: .header2,
             textColor: .styleBlack,
@@ -67,9 +68,14 @@ extension SymbolOfTheDayView {
         symbolNameLabel = .init(
             with: .bodyMainRegular,
             textColor: .mainOrange,
-            textAlignment: .left,
-            text: "Sankofa"
+            textAlignment: .left
         )
+        
+        favoriteButton.setImage(.init(systemName: "suit.heart"), for: .normal)
+        favoriteButton.setImage(.init(systemName: "suit.heart.fill"), for: .selected)
+        favoriteButton.tintColor = .mainOrange
+        favoriteButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        favoriteButton.isHidden = true
         
         soundButton = .init(with: .indicator, title: nil)
         soundButton.iconImageView.image = .named("icon-28-sound")
@@ -90,8 +96,7 @@ extension SymbolOfTheDayView {
         meaningDescriptionLabel = .init(
             with: .bodyMainRegular,
             textColor: .styleBlack,
-            textAlignment: .left,
-            text: "Return and get it."
+            textAlignment: .left
         )
         
         detailsLabel = .init(
@@ -104,15 +109,14 @@ extension SymbolOfTheDayView {
         detailsDescriptionLabel = .init(
             with: .bodyMainRegular,
             textColor: .styleBlack,
-            textAlignment: .left,
-            text: "Sankofa is a word in the Twi language of Ghana meaning to retrieve and also refers to the Bono Adinkra symbol represented either with a stylized heart shape or by a bird with its head turned backwards while its feet face forward carrying a precious egg in its mouth."
+            textAlignment: .left
         )
         
         addSubview(titleLabel)
         addSubview(symbolOfTheDayContainer)
         symbolOfTheDayContainer.addSubview(containerBackgroundImageView)
         symbolOfTheDayContainer.addSubview(symbolOfTheDayImageView)
-        symbolOfTheDayContainer.addSubview(favoriteIconImageView)
+        symbolOfTheDayContainer.addSubview(favoriteButton)
         addSubview(symbolNameLabel)
         addSubview(soundButton)
         addSubview(meaningLabel)
@@ -144,11 +148,11 @@ extension SymbolOfTheDayView {
             $0.width |=| Constants.symbolIconImageViewSize.width
         }
         
-        favoriteIconImageView.layout {
+        favoriteButton.layout {
             $0.top == symbolOfTheDayContainer.topAnchor + Constants.verticalInset.halved
             $0.trailing == symbolOfTheDayContainer.trailingAnchor - Constants.favoriteIconTrailingInset
-            $0.height |=| Constants.favoriteIconImageViewSize.height
-            $0.width |=| Constants.favoriteIconImageViewSize.width
+            $0.height |=| Constants.favoriteButtonSize.height
+            $0.width |=| Constants.favoriteButtonSize.width
         }
         
         symbolNameLabel.layout {
