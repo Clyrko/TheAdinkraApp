@@ -22,32 +22,34 @@ class ViewControllerFactory {
                  sidebarItem: tabBarItemProvider.home
              )
              
-             let store = ContainedNavigationViewController(
-                 rootViewController: makeStoreViewController(),
-                 sidebarItem: tabBarItemProvider.store
-             )
+//             let store = ContainedNavigationViewController(
+//                 rootViewController: makeStoreViewController(),
+//                 sidebarItem: tabBarItemProvider.store
+//             )
+//             
+//             let favorites = ContainedNavigationViewController(
+//                 rootViewController: makeFavoritesViewController(),
+//                 sidebarItem: tabBarItemProvider.favorites
+//             )
+//             
+//             let settings = ContainedNavigationViewController(
+//                 rootViewController: makeSettingsViewController(),
+//                 sidebarItem: tabBarItemProvider.settings
+//             )
              
-             let favorites = ContainedNavigationViewController(
-                 rootViewController: makeFavoritesViewController(),
-                 sidebarItem: tabBarItemProvider.favorites
-             )
+             return home
              
-             let settings = ContainedNavigationViewController(
-                 rootViewController: makeSettingsViewController(),
-                 sidebarItem: tabBarItemProvider.settings
-             )
-             
-             return BaseApplicationViewController(
-                 viewControllers: [
-                     home, store, favorites, settings
-                 ],
-                 ftuxCardItems: [
-                     ftuxCardItemProvider.home,
-                     ftuxCardItemProvider.store,
-                     ftuxCardItemProvider.favorites,
-                     ftuxCardItemProvider.settings
-                 ]
-             )
+//             return BaseApplicationViewController(
+//                 viewControllers: [
+//                     home, store, favorites, settings
+//                 ],
+//                 ftuxCardItems: [
+//                     ftuxCardItemProvider.home,
+//                     ftuxCardItemProvider.store,
+//                     ftuxCardItemProvider.favorites,
+//                     ftuxCardItemProvider.settings
+//                 ]
+//             )
          }
 
          func makeHomeViewController() -> BaseViewController {

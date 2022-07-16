@@ -6,7 +6,7 @@ private enum Constants {
     static let pronunciationIconImageViewSize = CGSize(width: 28, height: 28)
     static let horizontalInset: CGFloat = 28
     static let width = UIScreen.width
-    static let scrollViewHeight: CGFloat = 800
+    static let scrollViewHeight: CGFloat = 840
 }
 
 class SymbolDetailsViewController: BaseViewController {

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 private enum Constants {
-    static let itemSize = CGSize(width: 151, height: 141)
+    static let itemSize = CGSize(width: (UIScreen.width - 60) / 2, height: 141)
     static let horizontalInset: CGFloat = 28
 }
 
@@ -219,8 +219,8 @@ extension ViewAllSymbolsViewController {
         
         collectionView.layout {
             $0.top == titleLabel.bottomAnchor + 24
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
+            $0.leading == view.leadingAnchor + Constants.horizontalInset.halved
+            $0.trailing == view.trailingAnchor - Constants.horizontalInset.halved
             $0.bottom == view.bottomAnchor
         }
     }

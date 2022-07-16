@@ -220,7 +220,7 @@ class ScanViewController: BaseViewController {
             position = scannedSymbol.id
             func showDetails() {
                 let controller = SymbolDetailsViewController()
-                controller.symbols = symbols[position - 1]
+                controller.symbols = symbols[position! - 1]
                 navigationController?.pushViewController(controller, animated: true)
             }
             goToDetailsButton.onTapAction = {
