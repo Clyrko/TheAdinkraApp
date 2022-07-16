@@ -5,10 +5,14 @@ import AVFoundation
 private enum Constants {
     static let pronunciationIconImageViewSize = CGSize(width: 28, height: 28)
     static let horizontalInset: CGFloat = 28
+    static let width = UIScreen.width
+    static let scrollViewHeight: CGFloat = 800
 }
 
 class SymbolDetailsViewController: BaseViewController {
     private let navBar = PopOverNavigationBar()
+    private var scrollView: UIScrollView!
+    private var container = UIView()
     private var symbolView = SymbolView()
     private var symbolNameLabel: StyleLabel!
     private var symbolPronunciationButton: StyleButton!
@@ -17,6 +21,9 @@ class SymbolDetailsViewController: BaseViewController {
     private var detailsLabel: StyleLabel!
     private var detailsDescriptionLabel: StyleLabel!
     private var player: AVAudioPlayer!
+    
+    private var scrollViewHeightConstraint: NSLayoutConstraint!
+    private var containerViewHeightConstraint: NSLayoutConstraint!
     
     var symbols: SymbolPresentationModel!
     
@@ -71,6 +78,13 @@ extension SymbolDetailsViewController {
         }
         navBar.title = "Symbol Details"
         
+        scrollView = .init()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isScrollEnabled = true
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.backgroundColor = .clear
+        container.backgroundColor = .styleWhite
+        
         symbolNameLabel = .init(
             with: .bodyBalsamiqBold,
             textColor: .mainOrange,
@@ -113,13 +127,15 @@ extension SymbolDetailsViewController {
         )
         
         view.addSubview(navBar)
-        view.addSubview(symbolView)
-        view.addSubview(symbolNameLabel)
-        view.addSubview(symbolPronunciationButton)
-        view.addSubview(meaningLabel)
-        view.addSubview(meaningDescriptionLabel)
-        view.addSubview(detailsLabel)
-        view.addSubview(detailsDescriptionLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(container)
+        container.addSubview(symbolView)
+        container.addSubview(symbolNameLabel)
+        container.addSubview(symbolPronunciationButton)
+        container.addSubview(meaningLabel)
+        container.addSubview(meaningDescriptionLabel)
+        container.addSubview(detailsLabel)
+        container.addSubview(detailsDescriptionLabel)
     }
     
     private func layoutConstraint() {
@@ -129,46 +145,66 @@ extension SymbolDetailsViewController {
             $0.trailing == view.trailingAnchor
         }
         
+        scrollView.layout {
+            $0.top == navBar.bottomAnchor + Constants.horizontalInset.halved
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+            $0.bottom == view.bottomAnchor
+            $0.width |=| Constants.width
+        }
+        scrollViewHeightConstraint = scrollView.heightAnchor.constraint(equalToConstant: Constants.scrollViewHeight)
+        scrollViewHeightConstraint.isActive = true
+        
+        container.layout {
+            $0.top == scrollView.topAnchor
+            $0.leading == scrollView.leadingAnchor
+            $0.trailing == scrollView.trailingAnchor
+            $0.bottom == scrollView.bottomAnchor
+            $0.width |=| Constants.width
+        }
+        containerViewHeightConstraint = container.heightAnchor.constraint(equalToConstant: Constants.scrollViewHeight)
+        containerViewHeightConstraint.isActive = true
+        
         symbolView.layout {
-            $0.top == navBar.bottomAnchor + 28
-            $0.leading == view.leadingAnchor + 28
-            $0.trailing == view.trailingAnchor - 28
+            $0.top == container.topAnchor
+            $0.leading == container.leadingAnchor + 28
+            $0.trailing == container.trailingAnchor - 28
         }
         
         symbolNameLabel.layout {
             $0.top == symbolView.bottomAnchor + 30
-            $0.leading == view.leadingAnchor + 28
+            $0.leading == container.leadingAnchor + 28
         }
         
         symbolPronunciationButton.layout {
             $0.centerY == symbolNameLabel.centerYAnchor
-            $0.trailing == view.trailingAnchor - 28
+            $0.trailing == container.trailingAnchor - 28
             $0.height |=| Constants.pronunciationIconImageViewSize.height
             $0.width |=| Constants.pronunciationIconImageViewSize.width
         }
         
         meaningLabel.layout {
             $0.top == symbolNameLabel.bottomAnchor + 54
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
+            $0.leading == container.leadingAnchor + Constants.horizontalInset
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
         
         meaningDescriptionLabel.layout {
             $0.top == meaningLabel.bottomAnchor + 3
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
+            $0.leading == container.leadingAnchor + Constants.horizontalInset
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
         
         detailsLabel.layout {
             $0.top == meaningDescriptionLabel.bottomAnchor + 30
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
+            $0.leading == container.leadingAnchor + Constants.horizontalInset
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
         
         detailsDescriptionLabel.layout {
             $0.top == detailsLabel.bottomAnchor + 3
-            $0.leading == view.leadingAnchor + Constants.horizontalInset
-            $0.trailing == view.trailingAnchor - Constants.horizontalInset
+            $0.leading == container.leadingAnchor + Constants.horizontalInset
+            $0.trailing == container.trailingAnchor - Constants.horizontalInset
         }
     }
 }
