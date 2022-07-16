@@ -48,6 +48,7 @@ extension TitleHeaderView {
         profilePictureButton.contentMode = .scaleAspectFit
         profilePictureButton.imageView?.tintColor = .mainOrange
         profilePictureButton.addTarget(self, action: #selector(onTapAction(sender:)), for: .touchUpInside)
+        profilePictureButton.isHidden = true
         
         addSubview(profilePictureButton)
         addSubview(titleLabel)

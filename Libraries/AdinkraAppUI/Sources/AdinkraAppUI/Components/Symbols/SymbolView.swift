@@ -66,12 +66,12 @@ extension SymbolView {
         favoriteButton.setImage(.init(systemName: "suit.heart.fill"), for: .selected)
         favoriteButton.tintColor = .mainOrange
         favoriteButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        favoriteButton.isHidden = true
         
         symbolNameLabel = .init(
            with: .header1,
            textColor: .styleBlack,
            textAlignment: .left,
-           // FIXME: Put quotes around title
            text: title
         )
         
