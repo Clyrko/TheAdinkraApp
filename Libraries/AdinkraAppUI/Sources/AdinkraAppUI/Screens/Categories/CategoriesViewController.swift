@@ -12,17 +12,17 @@ class CategoriesViewController: BaseViewController {
     private var backgroundView = SearchNotFoundView()
     private var collectionView: UICollectionView!
     
-    var category: [CategoriesPresentationModel] = [
+    private var category: [CategoriesPresentationModel] = [
         .init(id: 1, category: "Love", image: .named("symbol-akoma")),
         .init(id: 2, category: "Power", image: .named("symbol-adinkrahene")),
-        .init(id: 3, category: "Strength", image: .named("symbol-aban")),
-        .init(id: 4, category: "Wisdom", image: .named("symbol-akoma")),
-        .init(id: 5, category: "Home", image: .named("symbol-akoma")),
+        .init(id: 3, category: "Wealth", image: .named("symbol-abe-dua")),
+        .init(id: 4, category: "Wisdom", image: .named("symbol-denkyem")),
+        .init(id: 5, category: "Home", image: .named("symbol-nkonsonkonson")),
         .init(id: 6, category: "Peace", image: .named("symbol-mpatapo")),
-        .init(id: 7, category: "War", image: .named("symbol-akoben")),
+        .init(id: 7, category: "War", image: .named("symbol-akofena")),
         .init(id: 8, category: "Faith", image: .named("symbol-agyindawuru")),
-        .init(id: 9, category: "Self", image: .named("symbol-ani-bere-a-enso-gya")),
-        .init(id: 10, category: "Nature", image: .named("symbol-asase-ye-duru"))
+        .init(id: 9, category: "Self", image: .named("symbol-epa")),
+        .init(id: 10, category: "Nature", image: .named("symbol-wawa-aba"))
     ]
     var dataSource: [CategoriesPresentationModel] = []
     

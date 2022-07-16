@@ -126,7 +126,6 @@ extension StyleButton {
             addSubview(container)
         case .indicator:
             backgroundColor = .mainOrange
-//            iconImageView.image = .named("icon-24-arrow-right")
             iconImageView.setImageMaskColor(.styleWhite)
             addSubview(iconImageView)
         }

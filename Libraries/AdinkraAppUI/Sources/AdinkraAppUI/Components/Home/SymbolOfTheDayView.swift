@@ -190,12 +190,3 @@ extension SymbolOfTheDayView {
         }
     }
 }
-
-//MARK: - MODEL
-//extension SymbolOfTheDayView {
-//    struct UiModel {
-//        let description: String
-//        let completedCount: Double
-//        let totalCount: Double
-//    }
-//}
