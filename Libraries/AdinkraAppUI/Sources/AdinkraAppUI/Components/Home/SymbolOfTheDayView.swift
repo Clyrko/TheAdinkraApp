@@ -22,6 +22,7 @@ class SymbolOfTheDayView: UIView {
     var symbolOfTheDayImageView: UIImageView!
     private var favoriteButton = UIButton()
     var symbolNameLabel: StyleLabel!
+    var symbolPhoneticLabel: StyleLabel!
     var soundButton: StyleButton!
     private var meaningLabel: StyleLabel!
     var meaningDescriptionLabel: StyleLabel!
@@ -68,6 +69,12 @@ extension SymbolOfTheDayView {
         symbolNameLabel = .init(
             with: .bodyMainRegular,
             textColor: .mainOrange,
+            textAlignment: .left
+        )
+        
+        symbolPhoneticLabel = .init(
+            with: .bodyMainRegular,
+            textColor: .styleBlack,
             textAlignment: .left
         )
         
@@ -118,6 +125,7 @@ extension SymbolOfTheDayView {
         symbolOfTheDayContainer.addSubview(symbolOfTheDayImageView)
         symbolOfTheDayContainer.addSubview(favoriteButton)
         addSubview(symbolNameLabel)
+        addSubview(symbolPhoneticLabel)
         addSubview(soundButton)
         addSubview(meaningLabel)
         addSubview(meaningDescriptionLabel)
@@ -161,6 +169,12 @@ extension SymbolOfTheDayView {
             $0.trailing == soundButton.leadingAnchor - Constants.horizontalInset
         }
         
+        symbolPhoneticLabel.layout {
+            $0.top == symbolNameLabel.bottomAnchor
+            $0.leading == leadingAnchor + Constants.horizontalInset
+            $0.trailing == soundButton.leadingAnchor - Constants.horizontalInset
+        }
+        
         soundButton.layout {
             $0.centerY == symbolNameLabel.centerYAnchor
             $0.trailing == trailingAnchor - Constants.horizontalInset
@@ -169,7 +183,7 @@ extension SymbolOfTheDayView {
         }
         
         meaningLabel.layout {
-            $0.top == symbolNameLabel.bottomAnchor + Constants.labelTopInset
+            $0.top == symbolPhoneticLabel.bottomAnchor + Constants.labelTopInset
             $0.leading == leadingAnchor + Constants.horizontalInset
             $0.trailing == trailingAnchor - Constants.horizontalInset
         }

@@ -120,6 +120,7 @@ class HomeViewController: BaseViewController {
         symbolOfTheDayView.symbolOfTheDayImageView.image = symbols[Int(randomSymbol)].symbol
         symbolOfTheDayView.meaningDescriptionLabel.text = symbols[Int(randomSymbol)].meaning
         symbolOfTheDayView.detailsDescriptionLabel.text = symbols[Int(randomSymbol)].description
+        symbolOfTheDayView.symbolPhoneticLabel.text = symbols[Int(randomSymbol)].phonetic
         
         if symbols[Int(randomSymbol)].pronunciation == "" {
             symbolOfTheDayView.soundButton.iconImageView.image = .init(systemName: "speaker.slash")
